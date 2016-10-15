@@ -1,6 +1,6 @@
 'use strict';
 
-let registerFactory = ($http) => {
+let register = ($http) => {
 	// /geolocation/countries
 	// /geolocation/regions
 	// /picture
@@ -10,7 +10,6 @@ let registerFactory = ($http) => {
 			url: '/geolocation/countries'
 		});
 	}
-	let countriesPromise = getCountries();
 
 	let getRegions = () => {
 		return $http({
@@ -18,24 +17,27 @@ let registerFactory = ($http) => {
 			url: '/geolocation/regions'
 		});
 	}
-	let regionsPromise = getRegions();
 
-
-	let sendForm = () => {
-		return $http({
+	let sendForm = (data) => {
+		data.file = window.fileBase64Data;
+		console.log(data);
+		$http({
 			method: 'POST',
-			url: '/picture'
-		});
+			url: '/register',
+			data: data
+		})
+		.success((response) => {
+			console.log(response);
+		})
 	}
-	let sendFormPromise = sendForm();
 
 	return {
-		countriesPromise: countriesPromise,
+		getCountries: getCountries,
 		getRegions: getRegions,
 		sendForm: sendForm
 	}
 }
 
-registerFactory.$inject = ['$http'];
+register.$inject = ['$http'];
 
-angular.module('app').factory('registerFactory', registerFactory);
+angular.module('app').factory('register', register);

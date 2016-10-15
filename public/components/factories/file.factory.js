@@ -1,20 +1,19 @@
 'use strict';
 
 angular.module('app').factory('file', () => {
-	let convertFileToBinary = (inputFileId) => {
-		let file = document.getElementById(inputFileId).files[0];
+	let convertFileToBase64 = (inputFileId) => {
+		let file = document.getElementById(inputFileId);
 		let fileReader = new FileReader();
-		fileReader.readAsBinaryString(file);
+		fileReader.readAsDataURL(file.files[0]);
 
-		let binaryData;
 		fileReader.onloadend = (e) => {
-			binaryData = e.target.result;
-			console.log(binaryData);
-			// send your binary data via $http or $resource or do anything else with it
+			window.fileBase64Data = e.target.result;
+			console.log('file uploaded and converted to base64');
+			console.log(window.fileBase64Data);
 		}
 	};
 
 	return {
-		convertFileToBinary: convertFileToBinary
+		convertFileToBase64: convertFileToBase64
 	}
 });

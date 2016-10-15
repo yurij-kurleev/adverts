@@ -14,7 +14,7 @@ let routesConfig = ($routeProvider) => {
 			controller: 'registerController'
 		})
 		.otherwise({
-			redirectTo: '/home'
+			redirectTo: '/register'
 		});
 }
 routesConfig.$inject = ['$routeProvider'];

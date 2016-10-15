@@ -1,10 +1,11 @@
 'use strict';
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-const port = 1000;
+const port = 3000;
 app.listen(port, () => {
 	console.log('server listening at http://localhost:' + port);
 });
@@ -15,6 +16,7 @@ app.listen(port, () => {
 
 /** others **/
 	app.use(express.static(__dirname+"/public"));
+	app.use(bodyParser.json());
 
 /** countries **/
 	app.get('/geolocation/countries', (request, response) => {
@@ -29,8 +31,14 @@ app.listen(port, () => {
 			},
 			{
 				_id: 'c3',
-				name: 'Rashka'
+				name: 'Brazil'
 			}
 		]
 		response.send(countries);
+	});
+
+/** register **/
+	app.post('/register', (request, response) => {
+		console.log(request.body);
+		response.send('OK');
 	});
