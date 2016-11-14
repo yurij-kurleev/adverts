@@ -13,10 +13,14 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/register/register.html',
 			controller: 'registerController'
 		})
+        .when('/index', {
+            templateUrl: 'components/pages/index/index.html',
+            controller: 'indexController'
+        })
 		.otherwise({
-			redirectTo: '/register'
+			redirectTo: '/index'
 		});
-}
+};
 routesConfig.$inject = ['$routeProvider'];
 
 app.config(routesConfig);

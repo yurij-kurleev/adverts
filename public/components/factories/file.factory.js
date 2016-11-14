@@ -7,7 +7,7 @@ angular.module('app').factory('file', () => {
 		fileReader.readAsDataURL(file.files[0]);
 
 		fileReader.onloadend = (e) => {
-			window.fileBase64Data = e.target.result;
+			window.fileBase64Data = e.target.result;//e.target - элемент который инициировал действие
 			console.log('file uploaded and converted to base64');
 			console.log(window.fileBase64Data);
 		}

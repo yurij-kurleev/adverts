@@ -11,4 +11,4 @@ let convertFileToBase64 = (inputFileId) => {
 		window.fileBase64Data = e.target.result;
 		console.log('file uploaded and converted to base64');
 	}
-}
+};

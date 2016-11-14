@@ -22,20 +22,40 @@ app.listen(port, () => {
 	app.get('/geolocation/countries', (request, response) => {
 		let countries = [
 			{
-				_id: 'c1',
+				id: 'c1',
 				name: 'Australia'
 			},
 			{
-				_id: 'c2',
+				id: 'c2',
 				name: 'USA'
 			},
 			{
-				_id: 'c3',
+				id: 'c3',
 				name: 'Brazil'
 			}
-		]
+		];
 		response.send(countries);
 	});
+
+/** regions **/
+
+app.get('/geolocation/countries/c1/regions', (request, response) => {
+	let regions = [
+		{
+			id: 'r1',
+			name: 'Sidney'
+		},
+		{
+			id: 'r2',
+			name: 'Washington DC'
+		},
+		{
+			id: 'r3',
+			name: 'Kuala-Lumpur'
+		}
+	];
+	response.send(regions);
+});
 
 /** register **/
 	app.post('/register', (request, response) => {
