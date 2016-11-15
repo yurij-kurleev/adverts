@@ -1,6 +1,6 @@
 'use strict';
 
-const app = angular.module('app', ['ngRoute']);
+const app = angular.module('app', ['ngRoute', 'ngCookies']);
 
 // Routes
 let routesConfig = ($routeProvider) => {
@@ -21,6 +21,6 @@ let routesConfig = ($routeProvider) => {
 			redirectTo: '/index'
 		});
 };
-routesConfig.$inject = ['$routeProvider'];
+routesConfig.$inject = ['$routeProvider', '$cookiesProvider'];
 
 app.config(routesConfig);

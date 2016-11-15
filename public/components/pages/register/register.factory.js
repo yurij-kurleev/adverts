@@ -27,8 +27,7 @@ let register = ($http, $cookies) => {
 			data: data
 		})
 		.success((response) => {
-			delete data.file;
-			$cookies.putObject('user', data);
+			$cookies.putObject('user', response);
 		})
 		.error(() => {
 			//
@@ -42,6 +41,6 @@ let register = ($http, $cookies) => {
 	}
 };
 
-register.$inject = ['$http', 'ngCookies'];
+register.$inject = ['$http', '$cookies'];
 
 angular.module('app').factory('register', register);

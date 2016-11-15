@@ -1,6 +1,6 @@
 'use strict';
 
-let registerController = ($scope, register, $window, ui) => {
+let registerController = ($scope, register, $window, ui, $cookies) => {
 	register.getCountries().success((response) => {
 		$scope.countries = response;
 	})
@@ -28,7 +28,8 @@ registerController.$inject = [
 	'$scope',
 	'register',
     '$window',
-	'ui'
+	'ui',
+    '$cookies'
 ];
 
 angular.module('app').controller('registerController', registerController);
