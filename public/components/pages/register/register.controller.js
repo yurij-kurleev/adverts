@@ -1,6 +1,10 @@
 'use strict';
 
 let registerController = ($scope, register, $window, ui, $cookies) => {
+    $scope.user = $cookies.getObject('user');
+    if($scope.user){
+        $window.location.href = '#/index';
+    }
 	register.getCountries().success((response) => {
 		$scope.countries = response;
 	})
@@ -20,8 +24,15 @@ let registerController = ($scope, register, $window, ui, $cookies) => {
 
 	$scope.formData = {};
 	$scope.sendForm = () => {
-		register.sendForm($scope.formData);
-        $window.location.href = '#/index';
+		register.sendForm($scope.formData).success((response) => {
+            //$cookies.putObject('user', response);
+            delete $scope.formData.file;
+            $cookies.putObject('user', $scope.formData);
+            $window.location.href = '#/index';
+        })
+        .error(() => {
+            //
+        });
 	};
 };
 registerController.$inject = [

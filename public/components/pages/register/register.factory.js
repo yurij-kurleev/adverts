@@ -1,6 +1,6 @@
 'use strict';
 
-let register = ($http, $cookies) => {
+let register = ($http) => {
 	// /geolocation/countries
 	// /geolocation/regions
 	// /picture
@@ -20,18 +20,11 @@ let register = ($http, $cookies) => {
 
 	let sendForm = (data) => {
 		data.file = window.fileBase64Data;
-		//console.log(data);
-		$http({
+		return $http({
 			method: 'POST',
 			url: '/register',
 			data: data
-		})
-		.success((response) => {
-			$cookies.putObject('user', response);
-		})
-		.error(() => {
-			//
-		})
+		});
 	};
 
 	return {
@@ -41,6 +34,6 @@ let register = ($http, $cookies) => {
 	}
 };
 
-register.$inject = ['$http', '$cookies'];
+register.$inject = ['$http'];
 
 angular.module('app').factory('register', register);

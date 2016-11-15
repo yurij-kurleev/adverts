@@ -1,44 +1,51 @@
-<div class="items-block">
-    <div class="items-block-header">
-        <h2 class="items-block-h2">Недавние объявления</h2>
+<div ng-include="'components/partials/header.html'"></div>
+<div class="main-content-block container">
+    <div class="aside-block" ng-include="'components/partials/side_menu.html'"></div>
+    <div class="items-block">
+        <div class="items-block">
+            <div class="items-block-header">
+                <h2 class="items-block-h2">Недавние объявления</h2>
+            </div>
+
+            <div class="post">
+                <div class="post-description">
+                    <h3 class="post-title">Test title</h3>
+                    <div class="image-block">
+                        <img src="../../../img/avatarkapsd.jpg" alt="Изображение товара" class="post-main-image">
+                    </div>
+                    <div class="description">
+                        Test description
+                    </div>
+                </div>
+                <div class="post-rating">
+
+                    <div class="delete-post"> X </div>
+
+                    <div class="price">150 грн.</div>
+                </div>
+                <div class="hr"><hr/></div>
+                <div class="post-footer">
+                    <div class="post-time">
+                        <img src="../../../img/dateIco.png" alt="dateIco">
+                        19.10.2016
+                    </div>
+                    <div class="post-author">
+                        <img src="../../../img/authorIco.png" alt="authorIco">
+                        Юрий Курлеев
+                    </div>
+                    <div class="post-readmore-btn">
+                        <a href="#" class="post-readmore">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page-navigation-block">
+            <a href="#" id="prev" class="page-navigation-link"> < </a>
+            <a href="#" id="cur" class="page-navigation-link"> 1 </a>
+            <a href="#" id="next" class="page-navigation-link"> > </a>
+        </div>
     </div>
-
-    <div class="post">
-        <div class="post-description">
-            <h3 class="post-title">Test title</h3>
-            <div class="image-block">
-                <img src="../../../img/avatarkapsd.jpg" alt="Изображение товара" class="post-main-image">
-            </div>
-            <div class="description">
-                Test description
-            </div>
-        </div>
-        <div class="post-rating">
-
-            <div class="delete-post"> X </div>
-
-            <div class="price">150 грн.</div>
-        </div>
-        <div class="hr"><hr/></div>
-        <div class="post-footer">
-            <div class="post-time">
-                <img src="../../../img/dateIco.png" alt="dateIco">
-                19.10.2016
-            </div>
-            <div class="post-author">
-                <img src="../../../img/authorIco.png" alt="authorIco">
-                Юрий Курлеев
-            </div>
-            <div class="post-readmore-btn">
-                <a href="#" class="post-readmore">Подробнее</a>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-<div class="page-navigation-block">
-    <a href="#" id="prev" class="page-navigation-link"> < </a>
-    <a href="#" id="cur" class="page-navigation-link"> 1 </a>
-    <a href="#" id="next" class="page-navigation-link"> > </a>
-</div>
+<div class="footer" ng-include="'components/partials/footer.html'"></div>

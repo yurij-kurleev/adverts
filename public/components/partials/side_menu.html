@@ -8,13 +8,11 @@
                 <a href="/index/index" class="menu-link">Главная страница</a>
             </div>
             <div class="menu-item">
-                <a href="#" class="menu-link" onclick="removeContent(); return false;">Информация о сайте</a>
+                <a href="#" class="menu-link">Информация о сайте</a>
             </div>
-
-            <div class="menu-item">
-                <a href="/user/about/>" class="menu-link" onclick="removeContent(); return false;">Личный кабинет</a>
+            <div class="menu-item" ng-show="user">
+                <a href="/user/about/>" class="menu-link">Личный кабинет</a>
             </div>
-
         </div>
     </div>
     <div class="menu-block">

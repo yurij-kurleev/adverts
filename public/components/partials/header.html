@@ -12,10 +12,15 @@
 			<div class="header-add">
 				<a href="#" class="header-add-button"> + Объявление</a>
 			</div>
-			<div class="header-regauth" ng-show="user">
-				<a href="#" class="header-regauth-link">
+			<div class="header-regauth">
+				<span ng-hide="user">
+					<a href="#" class="header-regauth-link">
 					<img src="../../img/loginIcon.png" alt="login"> ВХОД
-				</a> / <a href="#/register" class="header-regauth-link">РЕГИСТРАЦИЯ</a>
+				    </a> / <a href="#/register" class="header-regauth-link">РЕГИСТРАЦИЯ</a>
+				</span>
+                <span ng-show="user">
+                    <a href="" class="header-regauth-link" ng-click="unauthorize()">Выйти</a>
+                </span>
 			</div>
 		</div>
 	</div>
