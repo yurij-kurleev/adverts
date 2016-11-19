@@ -24,10 +24,16 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
 	$scope.formData = {};
 	$scope.sendForm = () => {
 		register.sendForm($scope.formData).success((response) => {
-		    let user = response;
-            user.login = $scope.formData.login;
-            user.password = $scope.formData.password;
-            $cookies.putObject('user', user);
+		    $scope.user = response;
+            $scope.user.login = $scope.formData.login;
+            $scope.user.password = $scope.formData.password;
+            if($scope.user.admin){
+                $scope.user.role = "Администраторы";
+            } else {
+                $scope.user.role = "Пользователи";
+            }
+            $scope.user.registrationDate = $scope.user.registrationDate.split("T");
+            $cookies.putObject('user', $scope.user);
             $window.location.href = '#/home';
         })
         .error((response) => {
