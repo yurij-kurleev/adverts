@@ -5,13 +5,13 @@ angular.module('app').factory('ui', () => {
 		let block = document.getElementById(blockId);
 		block.classList.toggle(classForToggle);
 	};
+
 	let toggleMenu = () => {
 		toggleClass('nav-menu', 'nav-menu_active');
 		toggleClass('change-on-menu-open', 'move-left-on-menu-open');
 	};
 
-	let scrollTo = (target, time) => {
-	    if(!time) time = 300;
+	let scrollTo = (target, time = 300) => {
 	    target = "#" + target;
 	    $('html, body').animate({scrollTop: $(target).offset().top}, time);
 	    return false;
@@ -24,14 +24,29 @@ angular.module('app').factory('ui', () => {
         }
         else{
             block.style.display = "block";
-            setTimeout(() => {block.style.display = "none"}, 4000);
+            setTimeout(() => {block.style.display = "none"}, 10000);
         }
     };
+
+    let toggleAuthDialog = () => {
+		let menu = document.getElementById('popup-form');
+		let layer = document.getElementById('dark-layout');
+		console.log(menu.style.display);
+		console.log(layer.style.display);
+		if(!menu.style.display || menu.style.display == "none"){
+			menu.style.display = "block";
+			layer.style.display = "block";
+		} else{
+			menu.style.display = "none";
+			layer.style.display = "none";
+		}
+	};
 
 	return {
 		toggleClass: toggleClass,
 		toggleMenu: toggleMenu,
 		scrollTo: scrollTo,
-        toggleError: toggleError
+        toggleError: toggleError,
+		toggleAuthDialog: toggleAuthDialog,
 	}
 });

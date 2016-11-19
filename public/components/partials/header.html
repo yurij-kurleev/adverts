@@ -1,3 +1,4 @@
+<div ng-include="'components/partials/authorizate-menu.html'"></div>
 <header class="header">
 	<div class="main-header">
 		<div class="main-header-content container">
@@ -14,7 +15,7 @@
 			</div>
 			<div class="header-regauth">
 				<span ng-hide="user">
-					<a href="#" class="header-regauth-link">
+					<a href="" class="header-regauth-link" ng-click="toggleAuthDialog()">
 					<img src="../../img/loginIcon.png" alt="login"> ВХОД
 				    </a> / <a href="#/register" class="header-regauth-link">РЕГИСТРАЦИЯ</a>
 				</span>

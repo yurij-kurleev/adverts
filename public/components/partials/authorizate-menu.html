@@ -1,0 +1,14 @@
+<div class="dark-layout" id="dark-layout" ng-click="toggleAuthDialog()"></div>
+<div class="popup-form" id="popup-form">
+    <form ng-submit="authorize()" class="advert-form">
+        <div class="form-auth-group">
+            <label for="login" class="label">Логин: </label>
+            <input type="text" class="auth-input" name="login" id="login" ng-model="formData.login" required>
+        </div>
+        <div class="form-auth-group">
+            <label for="password" class="label">Пароль: </label>
+            <input type="password" class="auth-input" name="password" id="password" ng-model="formData.password" required>
+        </div>
+        <button class="advert-form-submit" type="submit">Войти</button>
+    </form>
+</div>

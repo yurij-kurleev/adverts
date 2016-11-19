@@ -19,9 +19,10 @@ let register = ($http) => {
 	};
 
 	let sendForm = (data) => {
-		data.file = window.fileBase64Data;
+		data.image = window.fileBase64Data;
 		return $http({
 			method: 'POST',
+			//url: '/users',
 			url: '/register',
 			data: data
 		});

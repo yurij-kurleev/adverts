@@ -1,11 +1,12 @@
 'use strict';
 
-let registerController = ($scope, register, $window, ui, $cookies) => {
+let registerController = ($scope, register, $window, ui, $cookies, auth) => {
     $scope.user = $cookies.getObject('user');
     if($scope.user){
-        $window.location.href = '#/index';
+        $window.location.href = '#/home';
     }
 	register.getCountries().success((response) => {
+		//$scope.countries = response._embedded.countries;
 		$scope.countries = response;
 	})
 	.error(() => {
@@ -14,33 +15,42 @@ let registerController = ($scope, register, $window, ui, $cookies) => {
 
     $scope.getRegions = () => {
         register.getRegions($scope.selected).success((response) => {
+            //$scope.regions = response._embedded.regions;
             $scope.regions = response;
         })
         .error(() => {
-			$scope.error = "Can't get regions!";
-			ui.toggleError('error-msg');
+            console.log('Error: cannot get countries');
 		});
     };
 
 	$scope.formData = {};
 	$scope.sendForm = () => {
 		register.sendForm($scope.formData).success((response) => {
-            //$cookies.putObject('user', response);
-            delete $scope.formData.file;
-            $cookies.putObject('user', $scope.formData);
-            $window.location.href = '#/index';
+		    let user = response;
+            user.login = $scope.formData.login;
+            user.password = $scope.formData.password;
+            $cookies.putObject('user', user);
+            $window.location.href = '#/home';
         })
-        .error(() => {
-            //
+        .error((response) => {
+            $scope.error = "Unable to register";
+            ui.toggleError('error');
+            ui.scrollTo('error');
         });
 	};
+    $scope.authorize = () => {
+        $scope.user = auth.authorize($scope.formData);
+        ui.toggleAuthDialog();
+        $window.location.href = '#/home';
+    };
 };
 registerController.$inject = [
 	'$scope',
 	'register',
     '$window',
 	'ui',
-    '$cookies'
+    '$cookies',
+    'auth'
 ];
 
 angular.module('app').controller('registerController', registerController);
