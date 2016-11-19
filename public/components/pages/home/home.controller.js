@@ -7,15 +7,16 @@ let homeController = ($scope, $cookies, auth, ui) => {
     $scope.authorize = () => {
         auth.authorize($scope.formData).success((response)=>{
             $scope.user = response;
-            $scope.user.login = data.login;
-            $scope.user.password = data.password;
-            $cookies.putObject('user', response);
+            $scope.user.login = $scope.formData.login;
+            $scope.user.password = $scope.formData.password;
+            console.log($scope.user);
             if($scope.user.admin){
                 $scope.user.role = "Администраторы";
             } else {
                 $scope.user.role = "Пользователи";
             }
             $scope.user.registrationDate = $scope.user.registrationDate.split("T");
+            $cookies.putObject('user', $scope.user);
             ui.toggleAuthDialog();
         })
         .error((response) => {

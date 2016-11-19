@@ -58,8 +58,31 @@ app.get('/geolocation/countries/c1/regions', (request, response) => {
 });
 
 /** register **/
-	app.post('/register', (request, response) => {
+	app.post('/users', (request, response) => {
 		console.log(request.body);
 		response.send('OK');
 	});
 
+/** login **/
+app.get('/users/login', (request, response) => {
+	let user = {
+		name: "Bogdan",
+		surname: "Fedoronchuk",
+		phone: "752 25 50",
+		email: "haistler97@ukr.net",
+		registrationDate: "2016-11-19T12:31:22",
+		regionName: "Одесская область",
+		countryName: "Украина",
+		admin: false,
+		_links:{
+			self:{
+				href: "http://localhost:8080/users/1"
+			},
+			image: {
+				href: "http://localhost:8080/users/1/image"
+				}
+	},
+	id: 1
+	};
+	response.send(user);
+});
