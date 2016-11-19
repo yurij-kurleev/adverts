@@ -6,6 +6,12 @@ let homeController = ($scope, $cookies, auth, ui) => {
     $scope.formData = {};
     $scope.authorize = () => {
         $scope.user = auth.authorize($scope.formData);
+        if($scope.user.admin){
+            $scope.user.role = "Администраторы";
+        } else {
+            $scope.user.role = "Пользователи";
+        }
+        $scope.user.registrationDate = $scope.user.registrationDate.split("T");
         ui.toggleAuthDialog();
     };
     $scope.unauthorize = () => {

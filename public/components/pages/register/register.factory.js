@@ -22,8 +22,7 @@ let register = ($http) => {
 		data.image = window.fileBase64Data;
 		return $http({
 			method: 'POST',
-			//url: '/users',
-			url: '/register',
+			url: '/users',
 			data: data
 		});
 	};

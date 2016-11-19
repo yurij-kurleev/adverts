@@ -1,6 +1,6 @@
 'use strict';
 
-let userController = ($scope, $cookies) => {
+let profileController = ($scope, $cookies, auth) => {
     $scope.user = $cookies.getObject('user');
     $scope.authorize = () => {
         $scope.user = auth.authorize($scope.formData);
@@ -12,9 +12,10 @@ let userController = ($scope, $cookies) => {
     };
 };
 
-userController.$inject = [
+profileController.$inject = [
     '$scope',
-    '$cookies'
+    '$cookies',
+    'auth'
 ];
 
-angular.module('app').controller('userController', userController);
+angular.module('app').controller('profileController', profileController);

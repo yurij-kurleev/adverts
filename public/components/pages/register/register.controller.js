@@ -6,8 +6,7 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
         $window.location.href = '#/home';
     }
 	register.getCountries().success((response) => {
-		//$scope.countries = response._embedded.countries;
-		$scope.countries = response;
+		$scope.countries = response._embedded.countries;
 	})
 	.error(() => {
 		console.log('Error: cannot get countries');
@@ -15,8 +14,7 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
 
     $scope.getRegions = () => {
         register.getRegions($scope.selected).success((response) => {
-            //$scope.regions = response._embedded.regions;
-            $scope.regions = response;
+            $scope.regions = response._embedded.regions;
         })
         .error(() => {
             console.log('Error: cannot get countries');

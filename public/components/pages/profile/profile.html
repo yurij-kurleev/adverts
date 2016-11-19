@@ -10,17 +10,17 @@
             <img src="" class="photo">
         </div>
         <hr class="hr">
-        <div class="user-info-row">Имя: Юрий</div>
-        <div class="user-info-row">Фамилия: Курлеев</div>
-        <div class="user-info-row">Группа: Администраторы</div>
-        <div class="user-info-row">E-mail: ykurleev88@gmail.com</div>
-        <div class="user-info-row">Дата регистрации: 25.06.2016</div>
-        <div class="user-info-row">Откуда: Одесса, Украина</div>
+        <div class="user-info-row">Имя: {{user.name}}</div>
+        <div class="user-info-row">Фамилия: {{user.surname}}</div>
+        <div class="user-info-row">Группа: {{user.role}}</div>
+        <div class="user-info-row">E-mail: {{user.email}}</div>
+        <div class="user-info-row">Дата регистрации: {{user.registrationDate[0]}}</div>
+        <div class="user-info-row">Откуда: {{user.regionName}}, {{user.countryName}}</div>
         <hr class="hr">
         <a href="" class="edit-btn">Редактировать профиль</a>
     </div>
 
-    <!--<div class="user-posts">-->
+    <!--<div class="profile-posts">-->
         <div class="items-block-header">
             <h2 class="items-block-h2">Мои объявления</h2>
         </div>
