@@ -94,3 +94,71 @@ app.get('/users/login', (request, response) => {
 	};
 	response.send(user);
 });
+
+/** categories **/
+app.get('/categories', (request, response) => {
+	let categories = {
+		_embedded: {
+			categories: [
+				{
+					name: "Автомобили",
+					_links: {
+						self: {
+							href: "http://localhost:8080/categories/1"
+						}
+				},
+					id: "1"
+				},
+				{
+					name: "Промшленность",
+					_links: {
+						self: {
+							href: "http://localhost:8080/categories/2"
+						}
+					},
+					id: "2"
+				}
+			]
+		},
+		_links: {
+			self: {
+				href: "http://localhost:8080/categories"
+			}
+		}
+	};
+	response.send(categories);
+});
+
+/** subcategories **/
+app.get('/categories/1/subcategories', (request, response) => {
+	let subcategories = {
+		_embedded: {
+			subcategories: [
+				{
+					name: "Легковые",
+					_links: {
+						self: {
+							href: "http://localhost:8080/categories/1/subcategories/1"
+						}
+					},
+					id: "1"
+				},
+				{
+					name: "Грузовые",
+					_links: {
+						self: {
+							href: "http://localhost:8080/categories/1/subcategories/2"
+						}
+					},
+					id: "2"
+				}
+			]
+		},
+		_links: {
+			self: {
+				href: "http://localhost:8080/categories/1/subcategories"
+			}
+		}
+	};
+	response.send(subcategories);
+});
