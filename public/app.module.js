@@ -17,6 +17,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/profile/profile.html',
 			controller: 'profileController'
 		})
+		.when('/advert', {
+			templateUrl: 'components/pages/advert/add-advert.html',
+			controller: 'advertController'
+		})
 		.otherwise({
 			redirectTo: '/home'
 		});
