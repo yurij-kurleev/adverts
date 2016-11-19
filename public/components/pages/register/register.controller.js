@@ -37,7 +37,26 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
         });
 	};
     $scope.authorize = () => {
-        $scope.user = auth.authorize($scope.formData);
+        $scope.user = auth.authorize($scope.formData).success((response)=>{
+            $scope.user = response;
+            $scope.user.login = data.login;
+            $scope.user.password = data.password;
+            $cookies.putObject('user', response);
+            if($scope.user.admin){
+                $scope.user.role = "Администраторы";
+            } else {
+                $scope.user.role = "Пользователи";
+            }
+            $scope.user.registrationDate = $scope.user.registrationDate.split("T");
+            ui.toggleAuthDialog();
+            $window.location.href = '#/home';
+        })
+        .error((response) => {
+            console.log(response);
+            $scope.error = "Unable to authorize";
+            ui.toggleError('error');
+            ui.scrollTo('error');
+        });
         ui.toggleAuthDialog();
         $window.location.href = '#/home';
     };

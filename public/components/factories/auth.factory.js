@@ -6,21 +6,12 @@ let auth = ($cookies, $http) => {
     };
 
     let authorize =  (data) => {
-        let user = {};
-        $http({
+        return $http({
             method: 'GET',
             url: '/users/login',
             headers: {
                 'Authorization': 'Basic ' + data.login + ':' + data.password
             }
-        }).success((response)=>{
-            user = response;
-            user.login = data.login;
-            user.password = data.password;
-            $cookies.putObject('user', response);
-        })
-        .error((response) => {
-            console.log(response);
         });
     };
 
