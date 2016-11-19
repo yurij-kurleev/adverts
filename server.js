@@ -20,40 +20,48 @@ app.listen(port, () => {
 
 /** countries **/
 	app.get('/geolocation/countries', (request, response) => {
-		let countries = [
-			{
-				id: 'c1',
-				name: 'Australia'
-			},
-			{
-				id: 'c2',
-				name: 'USA'
-			},
-			{
-				id: 'c3',
-				name: 'Brazil'
+		let countries = {
+			_embedded: {
+				countries: [
+					{
+						id: 'c1',
+						name: 'Australia'
+					},
+					{
+						id: 'c2',
+						name: 'USA'
+					},
+					{
+						id: 'c3',
+						name: 'Brazil'
+					}
+				]
 			}
-		];
+		};
 		response.send(countries);
 	});
 
 /** regions **/
 
 app.get('/geolocation/countries/c1/regions', (request, response) => {
-	let regions = [
-		{
-			id: 'r1',
-			name: 'Sidney'
-		},
-		{
-			id: 'r2',
-			name: 'Washington DC'
-		},
-		{
-			id: 'r3',
-			name: 'Kuala-Lumpur'
+	let regions = {
+		_embedded: {
+			regions: [
+				{
+					id: 'r1',
+					name: 'Sidney'
+				},
+				{
+					id: 'r2',
+					name: 'Washington DC'
+				},
+				{
+					id: 'r3',
+					name: 'Kuala-Lumpur'
+				}
+			]
 		}
-	];
+	};
 	response.send(regions);
 });
 
@@ -79,10 +87,10 @@ app.get('/users/login', (request, response) => {
 				href: "http://localhost:8080/users/1"
 			},
 			image: {
-				href: "http://localhost:8080/users/1/image"
-				}
-	},
-	id: 1
+				href: "/public/img/nastol.com.ua-118626.jpg"
+			}
+		},
+		id: 1
 	};
 	response.send(user);
 });

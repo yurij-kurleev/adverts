@@ -36,19 +36,19 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
             ui.scrollTo('error');
         });
 	};
+    $scope.toggleAuthDialog = ui.toggleAuthDialog;
     $scope.authorize = () => {
         $scope.user = auth.authorize($scope.formData).success((response)=>{
             $scope.user = response;
-            $scope.user.login = data.login;
-            $scope.user.password = data.password;
-            $cookies.putObject('user', response);
+            $scope.user.login = $scope.formData.login;
+            $scope.user.password = $scope.formData.password;
             if($scope.user.admin){
                 $scope.user.role = "Администраторы";
             } else {
                 $scope.user.role = "Пользователи";
             }
             $scope.user.registrationDate = $scope.user.registrationDate.split("T");
-            ui.toggleAuthDialog();
+            $cookies.putObject('user', response);
             $window.location.href = '#/home';
         })
         .error((response) => {
@@ -58,7 +58,6 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
             ui.scrollTo('error');
         });
         ui.toggleAuthDialog();
-        $window.location.href = '#/home';
     };
 };
 registerController.$inject = [
