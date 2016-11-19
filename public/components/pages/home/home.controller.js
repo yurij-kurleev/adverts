@@ -5,7 +5,8 @@ let homeController = ($scope, $cookies, auth, ui) => {
     $scope.toggleAuthDialog = ui.toggleAuthDialog;
     $scope.formData = {};
     $scope.authorize = () => {
-        $scope.user = auth.authorize($scope.formData);
+        auth.authorize($scope.formData);
+        $scope.user = $cookies.getObject('user');
         if($scope.user.admin){
             $scope.user.role = "Администраторы";
         } else {
