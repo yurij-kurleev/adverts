@@ -10,6 +10,12 @@ let profileController = ($scope, $cookies, auth) => {
         auth.unauthorize();
         delete $scope.user;
     };
+    if($scope.user.admin){
+        $scope.user.role = "Администраторы";
+    } else {
+        $scope.user.role = "Пользователи";
+    }
+    $scope.user.registrationDate = $scope.user.registrationDate.split("T");
 };
 
 profileController.$inject = [
