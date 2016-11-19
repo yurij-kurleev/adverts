@@ -16,11 +16,17 @@ let advert = ($http) => {
     };
 
     let getMarks = () => {
-
+        return $http({
+            method: 'GET',
+            url: '/marks'
+        });
     };
 
     let getCurrency = () => {
-
+        return $http({
+            method: 'GET',
+            url: '/currencies'
+        });
     };
 
     return {

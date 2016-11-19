@@ -162,3 +162,38 @@ app.get('/categories/1/subcategories', (request, response) => {
 	};
 	response.send(subcategories);
 });
+
+/** currencies **/
+app.get('/currencies', (request, response) => {
+	let currencies = {
+		_embedded: {
+			currencies: [
+				{
+					abbreviation: "грн",
+					_links: {
+						self: {
+							"href": "http://localhost:8080/currencies/1"
+						}
+					},
+					id: 1
+				},
+				{
+					abbreviation: "долл",
+					_links: {
+						self: {
+							href: "http://localhost:8080/currencies/2"
+						}
+					},
+					id: 2
+				}
+			]
+		},
+		_links: {
+			self: {
+				href: "http://localhost:8080/currencies"
+			}
+		}
+};
+	response.send(currencies);
+});
+

@@ -12,6 +12,20 @@ let advertController = ($scope, $cookies, auth, $window, advert) => {
         console.log("Error: can't get categories");
     });
 
+    advert.getCurrency().success((response) => {
+        $scope.currencies = response._embedded.currencies;
+    })
+    .error(() => {
+        console.log("Can't get currencies");
+    });
+
+    advert.getMarks().success((response) => {
+        $scope.marks = response._embedded.marks;
+    })
+    .error(() => {
+        console.log("Can't get marks");
+    });
+
     $scope.getSubcategories = () => {
         advert.getSubcategories($scope.selected).success((response) => {
             $scope.subcategories = response._embedded.subcategories;
