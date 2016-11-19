@@ -15,10 +15,10 @@ let advert = ($http) => {
         });
     };
 
-    let getMarks = () => {
+    let getMarkers = () => {
         return $http({
             method: 'GET',
-            url: '/marks'
+            url: '/markers'
         });
     };
 
@@ -32,7 +32,7 @@ let advert = ($http) => {
     return {
         getCategories,
         getSubcategories,
-        getMarks,
+        getMarkers,
         getCurrency
     }
 };

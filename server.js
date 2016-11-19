@@ -197,3 +197,37 @@ app.get('/currencies', (request, response) => {
 	response.send(currencies);
 });
 
+/** marks **/
+app.get('/markers', (request, response) => {
+	let markers = {
+		_embedded: {
+			markers: [
+				{
+					name: "Срочно",
+					_links: {
+						self: {
+							"href": "http://localhost:8080/markers/1"
+						}
+					},
+					id: 1
+				},
+				{
+					name: "Дёшево",
+					_links: {
+						self: {
+							href: "http://localhost:8080/markers/2"
+						}
+					},
+					id: 2
+				}
+			]
+		},
+		_links: {
+			self: {
+				href: "http://localhost:8080/markers"
+			}
+		}
+	};
+	response.send(markers);
+});
+

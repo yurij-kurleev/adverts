@@ -19,11 +19,11 @@ let advertController = ($scope, $cookies, auth, $window, advert) => {
         console.log("Can't get currencies");
     });
 
-    advert.getMarks().success((response) => {
-        $scope.marks = response._embedded.marks;
+    advert.getMarkers().success((response) => {
+        $scope.markers = response._embedded.markers;
     })
     .error(() => {
-        console.log("Can't get marks");
+        console.log("Can't get markers");
     });
 
     $scope.getSubcategories = () => {
