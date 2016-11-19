@@ -18,7 +18,6 @@ let auth = ($cookies, $http) => {
             user.login = data.login;
             user.password = data.password;
             $cookies.putObject('user', response);
-            return user;
         })
         .error((response) => {
             console.log(response);
