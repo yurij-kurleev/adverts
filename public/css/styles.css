@@ -673,6 +673,26 @@ body{
     margin-bottom: 20px;
 }
 
+.tags-block{
+    padding: 15px 5%;
+}
+
+.tag-link{
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.tag-link:hover{
+    text-decoration: underline;
+}
+
+.small-help{
+    font-size: 0.8rem;
+    color: #5e5e5e;
+    flex: 1 100%;
+}
+
 @media (max-width: 1200px) {
     body{
         font-size: 14px;

@@ -35,6 +35,7 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
             $scope.user.registrationDate = $scope.user.registrationDate.split("T");
             $cookies.putObject('user', $scope.user);
             $window.location.href = '#/home';
+            ui.scrollTo('logo-link');
         })
         .error((response) => {
             $scope.error = "Unable to register";
