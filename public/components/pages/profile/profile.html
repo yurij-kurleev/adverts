@@ -2,25 +2,23 @@
 <div class="main-content-block container">
     <div class="aside-block" ng-include="'components/partials/side_menu.html'"></div>
     <div class="items-block">
-    <div class="items-block-header">
-        <h2 class="items-block-h2">Информация о пользователе</h2>
-    </div>
-    <div class="advert-form-block-main" id="user">
-        <div class="user-photo">
-            <img src='{{user._links.image.href}}' class="photo">
+        <div class="items-block-header">
+            <h2 class="items-block-h2">Информация о пользователе</h2>
         </div>
-        <hr class="hr">
-        <div class="user-info-row">Имя: {{user.name}}</div>
-        <div class="user-info-row">Фамилия: {{user.surname}}</div>
-        <div class="user-info-row">Группа: {{user.role}}</div>
-        <div class="user-info-row">E-mail: {{user.email}}</div>
-        <div class="user-info-row">Дата регистрации: {{user.registrationDate[0]}}</div>
-        <div class="user-info-row">Откуда: {{user.regionName}}, {{user.countryName}}</div>
-        <hr class="hr">
-        <a href="" class="edit-btn">Редактировать профиль</a>
-    </div>
-
-    <!--<div class="profile-posts">-->
+        <div class="advert-form-block-main" id="user">
+            <div class="user-photo">
+                <img src='{{user._links.image.href}}' class="photo">
+            </div>
+            <hr class="hr">
+            <div class="user-info-row">Имя: {{user.name}}</div>
+            <div class="user-info-row">Фамилия: {{user.surname}}</div>
+            <div class="user-info-row">Группа: {{user.role}}</div>
+            <div class="user-info-row">E-mail: {{user.email}}</div>
+            <div class="user-info-row">Дата регистрации: {{user.registrationDate[0]}}</div>
+            <div class="user-info-row">Откуда: {{user.regionName}}, {{user.countryName}}</div>
+            <hr class="hr">
+            <a href="" class="edit-btn">Редактировать профиль</a>
+        </div>
         <div class="items-block-header">
             <h2 class="items-block-h2">Мои объявления</h2>
         </div>
@@ -56,7 +54,5 @@
                 </div>
             </div>
         </div>
-
-    <!--</div>-->
     </div>
 </div>

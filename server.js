@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const port = 3000;
+const port = 8080;
 app.listen(port, () => {
 	console.log('server listening at http://localhost:' + port);
 });
@@ -247,5 +247,64 @@ app.get('/markers', (request, response) => {
 		}
 	};
 	response.send(markers);
+});
+
+/** register **/
+app.post('/adverts', (request, response) => {
+	response.send("OK");
+});
+
+/** get one advert **/
+app.get('/adverts/1', (request, response) => {
+	let adverts = {
+		advertId:4,
+		title:"Second ad",
+		description:"My description",
+		addTime:"2016-11-23T13:56:27",
+		views:0,
+		tags:[
+			{
+				name:"б/у",
+				id:1
+			},
+			{
+				name:"зарубежный",
+				id:2
+			}
+		],
+		price:25.56,
+		owner:{
+			name:"Bodya",
+			surname:"Fedoronchuk",
+			phone:"752 25 50",
+			email:"haistler@ukr.net",
+			id:1
+		},
+		region:{
+			name:"Одесская область",
+			id:1
+		},
+		country:{
+			name:"Украина",
+			id:1
+		},
+		category:{
+			name:"Автомобили",
+			id:1
+		},
+		subcategory:{
+			name:"Легковые",
+			id:1
+		},
+		marker:{
+			name:"Срочно",
+			id:1
+		},
+		currency:{
+			abbreviation:"грн",
+			id:1
+		}
+	};
+	response.send(adverts);
 });
 

@@ -9,7 +9,6 @@ let homeController = ($scope, $cookies, auth, ui) => {
             $scope.user = response;
             $scope.user.login = $scope.formData.login;
             $scope.user.password = $scope.formData.password;
-            console.log($scope.user);
             if($scope.user.admin){
                 $scope.user.role = "Администраторы";
             } else {

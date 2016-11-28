@@ -29,11 +29,21 @@ let advert = ($http) => {
         });
     };
 
+    let sendForm = (data) => {
+        data.image = window.fileBase64Data;
+        return $http({
+            method: 'POST',
+            url: '/adverts',
+            data: data
+        });
+    };
+
     return {
         getCategories,
         getSubcategories,
         getMarkers,
-        getCurrency
+        getCurrency,
+        sendForm
     }
 };
 

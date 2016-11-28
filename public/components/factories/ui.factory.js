@@ -42,6 +42,10 @@ angular.module('app').factory('ui', () => {
 		}
 	};
 
+	let setTagSize = () => {
+
+	};
+
 	return {
 		toggleClass: toggleClass,
 		toggleMenu: toggleMenu,

@@ -12,35 +12,43 @@
                     <hr class="hr">
                     <div class="form-group">
                         <label for="name" class="label">Имя: </label>
-                        <input type="text" class="input" id="name" ng-model="formData.name" required>
+                        <input type="text" class="input" id="name"
+                               ng-model="formData.name" required>
                     </div>
                     <div class="form-group">
                         <label for="surname" class="label">Фамилия: </label>
-                        <input type="text" class="input" id="surname" ng-model="formData.surname" required>
+                        <input type="text" class="input" id="surname"
+                               ng-model="formData.surname" required>
                     </div>
                     <div class="form-group">
                         <label for="login" class="label">Логин: </label>
-                        <input type="text" class="input" id="login" ng-model="formData.login" required>
+                        <input type="text" class="input" id="login"
+                               ng-model="formData.login" required>
                     </div>
                     <div class="form-group">
                         <label for="password" class="label">Пароль: </label>
-                        <input type="password" class="input" id="password" ng-model="formData.password" required>
+                        <input type="password" class="input" id="password"
+                               ng-model="formData.password" required>
                     </div>
                     <div class="form-group">
                         <label for="email" class="label">E-mail: </label>
-                        <input type="text" class="input" id="email" ng-model="formData.email" required>
+                        <input type="text" class="input" id="email"
+                               ng-model="formData.email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone" class="label">Телефон: </label>
-                        <input type="text" class="input" id="phone" ng-model="formData.phone" required>
+                        <input type="text" class="input" id="phone"
+                               ng-model="formData.phone" required>
                     </div>
                     <hr class="hr">
                     <div class="form-group">
                         <label for="country" class="label">Страна: </label>
-                        <select class="input" name="country" id="country" ng-model="selected"
+                        <select class="input" name="country" id="country"
+                                ng-model="selected"
                                 ng-change="getRegions()"
                                 ng-options="country.id as country.name for country in countries"
                                 required>
+                            <option value=""></option>
                         </select>
                     </div>
                     <div class="form-group" ng-show="selected">
@@ -49,12 +57,14 @@
                                 ng-model="formData.region"
                                 ng-options="region.id as region.name for region in regions"
                                 required>
+                            <option value=""></option>
                         </select>
                     </div>
                     <hr class="hr">
                     <div class="form-group">
                         <label class="label">Фотография: </label>
-                        <input type="file" class="input" id="file1" onchange="convertFileToBase64('file1')" required>
+                        <input type="file" class="input" id="file1"
+                               onchange="convertFileToBase64('file1')" required>
                     </div>
                     <hr class="hr">
                     <button class="advert-form-submit" type="submit">Готово</button>
