@@ -1,8 +1,8 @@
 'use strict';
 
-let advertController = ($scope, $cookies, auth, $window, advert, ui) => {
+let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
     $scope.user = $cookies.getObject('user');
-    if(!$scope.user && ~$window.location.href.indexOf("#/add-advert")){
+    if(!$scope.user && ~$window.location.href.indexOf("#/adverts/add")){
         $window.location.href = '#/home';
     }
 
@@ -59,14 +59,14 @@ let advertController = ($scope, $cookies, auth, $window, advert, ui) => {
             ui.scrollTo('logo-link');
         })
         .error((response) => {
-            $scope.error = "Unable to add advert";
+            $scope.error = "Unable to add advert-add";
             ui.toggleError('error');
             ui.scrollTo('error');
         });
     };
 };
 
-advertController.$inject = [
+advertAddController.$inject = [
     '$scope',
     '$cookies',
     'auth',
@@ -75,4 +75,4 @@ advertController.$inject = [
     'ui'
 ];
 
-angular.module('app').controller('advertController', advertController);
+angular.module('app').controller('advertAddController', advertAddController);

@@ -254,7 +254,7 @@ app.post('/adverts', (request, response) => {
 	response.send("OK");
 });
 
-/** get one advert **/
+/** get one advert-add **/
 app.get('/adverts/1', (request, response) => {
 	let adverts = {
 		advertId:4,

@@ -17,13 +17,13 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/profile/profile.html',
 			controller: 'profileController'
 		})
-		.when('/add-advert', {
-			templateUrl: 'components/pages/advert/add-advert.html',
-			controller: 'advertController'
+		.when('/adverts/add', {
+			templateUrl: 'components/pages/advert-add/add-advert.html',
+			controller: 'advertAddController'
 		})
-		.when('/more', {
-			templateUrl: 'components/pages/advert/more.html',
-			controller: 'advertController'
+		.when('/adverts/more/:id', {
+			templateUrl: 'components/pages/advert-more/more.html',
+			controller: 'advertMoreController'
 		})
 		.otherwise({
 			redirectTo: '/home'
