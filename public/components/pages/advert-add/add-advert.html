@@ -26,7 +26,7 @@
                     <div class="form-group" ng-show="selected">
                         <label for="subcategory" class="label">Подкатегория: </label>
                         <select class="input" name="subcategory" id="subcategory"
-                                ng-model="formData.scat"
+                                ng-model="formData.subcategory.id"
                                 ng-options="subcategory.id as subcategory.name for subcategory in subcategories"
                                 required>
                             <option value=""></option>
@@ -35,7 +35,7 @@
                     <hr class="hr">
                     <div class="form-group">
                         <label for="marker" class="label">Метка: </label>
-                        <select class="input" id="marker" ng-model="formData.marker"
+                        <select class="input" id="marker" ng-model="formData.marker.id"
                                 ng-options="marker.id as marker.name for marker in markers"
                                 required>
                             <option value=""></option>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="price" class="label">Цена: </label>
                         <input type="number" class="input" id="price" ng-model="formData.price" required>
-                        <select required class="input" id="currency" ng-model="formData.currency"
+                        <select required class="input" id="currency" ng-model="formData.currency.id"
                                 ng-options="currency.id as currency.abbreviation for currency in currencies">
                             <option value=""></option>
                         </select>

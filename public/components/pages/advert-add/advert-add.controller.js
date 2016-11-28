@@ -47,11 +47,13 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
     };
 
     $scope.sendForm = () => {
-        $scope.formData.user = $scope.user.id;
+        $scope.formData.owner.id = $scope.user.id;
         if($scope.formData.tags){
             let tmp = $scope.formData.tags.split('#');
             delete tmp[0];
-            $scope.formData.tags = tmp;
+            for(let i = 0; i < tmp.length; i++){
+                $scope.formData.tags.push({name: tmp[i]});
+            }
         }
         else $scope.formData.tags = [];
         advert.sendForm($scope.formData).success((response) => {

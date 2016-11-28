@@ -1,8 +1,10 @@
 'use strict';
 
-let advertMoreController = ($scope, $cookies, auth, ui) => {
+let advertMoreController = ($scope, $cookies, auth, ui, $routeParams) => {
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
+    $scope.id = $routeParams.id;
+    console.log($scope.id);
 
     $scope.scrollTo = () => {
         ui.scrollTo('logo-link', 500);
@@ -39,7 +41,8 @@ advertMoreController.$inject = [
     '$scope',
     '$cookies',
     'auth',
-    'ui'
+    'ui',
+    '$routeParams'
 ];
 
 angular.module('app').controller('advertMoreController', advertMoreController);
