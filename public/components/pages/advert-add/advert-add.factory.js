@@ -34,7 +34,10 @@ let advert = ($http) => {
         return $http({
             method: 'POST',
             url: '/adverts',
-            data: data
+            data: data,
+            headers: {
+                'Authorization': 'Basic ' + data.login + ':' + data.password
+            }
         });
     };
 
