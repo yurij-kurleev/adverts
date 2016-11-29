@@ -42,7 +42,7 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams) => {
     };
 
     let getPageFromUrl = (url) => {
-        let entry = url.match(/page=\d+/);
+        let entry = url.match(/page=\d+/)[0];
         if(entry){
             return entry.split('=')[1];
         }
