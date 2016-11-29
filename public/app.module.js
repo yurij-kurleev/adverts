@@ -5,7 +5,7 @@ const app = angular.module('app', ['ngRoute', 'ngCookies']);
 // Routes
 let routesConfig = ($routeProvider) => {
 	$routeProvider.
-		when('/home', {
+		when('/adverts/:pageId', {
 			templateUrl: 'components/pages/home/home.html',
 			controller: 'homeController'
 		})
@@ -26,7 +26,7 @@ let routesConfig = ($routeProvider) => {
 			controller: 'advertMoreController'
 		})
 		.otherwise({
-			redirectTo: '/home'
+			redirectTo: '/adverts/1'
 		});
 };
 routesConfig.$inject = ['$routeProvider', '$cookiesProvider'];

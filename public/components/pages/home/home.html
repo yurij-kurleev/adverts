@@ -6,45 +6,41 @@
             <div class="items-block-header">
                 <h2 class="items-block-h2">Недавние объявления</h2>
             </div>
-
-            <div class="post">
+            <div class="post" ng-repeat="advert in adverts">
                 <div class="post-description">
-                    <h3 class="post-title">Test title</h3>
+                    <h3 class="post-title">{{advert.title}}</h3>
                     <div class="image-block">
-                        <img src="../../../img/avatarkapsd.jpg" alt="Изображение товара" class="post-main-image">
+                        <img src={{advert._links.image.href}} alt="Изображение товара" class="post-main-image">
                     </div>
                     <div class="description">
-                        Test description
+                        {{advert.description}}
                     </div>
                 </div>
                 <div class="post-rating">
-
-                    <div class="delete-post"> X </div>
-
-                    <div class="price">150 грн.</div>
+                    <div class="delete-post" ng-show="{{user.id == advert.owner.id}}"> X </div>
+                    <div class="price">{{advert.price + " " + advert.currency.abbreviation}}</div>
                 </div>
                 <div class="hr"><hr/></div>
                 <div class="post-footer">
                     <div class="post-time">
                         <img src="../../../img/dateIco.png" alt="dateIco">
-                        19.10.2016
+                        {{advert.addTime}}
                     </div>
                     <div class="post-author">
                         <img src="../../../img/authorIco.png" alt="authorIco">
-                        Юрий Курлеев
+                        {{advert.owner.name + advert.owner.surname}}
                     </div>
                     <div class="post-readmore-btn">
-                        <a href="#/adverts/more/1" class="post-readmore">Подробнее</a>
+                        <a href="#/adverts/more/{{advert.id}}" class="post-readmore">Подробнее</a>
                     </div>
                 </div>
             </div>
 
         </div>
-
         <div class="page-navigation-block">
-            <a href="#" id="prev" class="page-navigation-link"> < </a>
-            <div id="cur" class="page-navigation-link"> 1 </div>
-            <a href="#" id="next" class="page-navigation-link"> > </a>
+            <a href="#" id="prev" class="page-navigation-link" ng-show="prev"> < </a>
+            <div id="cur" class="page-navigation-link" ng-show="cur"> 1 </div>
+            <a href="#" id="next" class="page-navigation-link" ng-show="next"> > </a>
         </div>
     </div>
 </div>

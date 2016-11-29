@@ -1,11 +1,19 @@
 'use strict';
 
-let index = () => {
-    let func = () => {
-
+let home = ($http) => {
+    let getAdvertsByPage = (page, limit = 2) => {
+        return $http({
+            method: 'GET',
+            url: '/adverts?page=' + page + '&size=' + limit
+        });
     };
 
     return {
-        func: func
-    }
+        getAdvertsByPage
+    };
 };
+
+home.$inject = [
+    '$http'
+];
+angular.module('app').factory('home', home);

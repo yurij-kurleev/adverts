@@ -437,14 +437,6 @@ body{
     background-color: #77CD42;
 }
 
-#prev{
-    display: none;
-}
-
-#next{
-    display: none;
-}
-
 .footer{
     background-color: #262B3A;
     display: flex;
