@@ -1,7 +1,7 @@
 'use strict';
 
-let homeController = ($scope, $cookies, auth, ui, home) => {
-    $scope.currentPage = document.getElementById('cur').nodeValue;
+let homeController = ($scope, $cookies, auth, ui, home, $routeParams) => {
+    $scope.currentPage = $routeParams.pageId;
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
 
@@ -53,7 +53,8 @@ homeController.$inject = [
     '$cookies',
     'auth',
     'ui',
-    'home'
+    'home',
+    '$routeParams'
 ];
 
 angular.module('app').controller('homeController', homeController);
