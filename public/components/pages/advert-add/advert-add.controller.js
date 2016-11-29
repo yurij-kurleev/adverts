@@ -51,8 +51,9 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
         if($scope.formData.tags){
             let tmp = $scope.formData.tags.split('#');
             delete tmp[0];
-            for(let i = 0; i < tmp.length; i++){
-                $scope.formData.tags.push({name: tmp[i]});
+            $scope.formData.tags = [];
+            for(let item in tmp){
+                $scope.formData.tags.push({name: item});
             }
         }
         else $scope.formData.tags = [];
@@ -63,7 +64,7 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
             ui.scrollTo('logo-link');
         })
         .error((response) => {
-            $scope.error = "Unable to add advert-add";
+            $scope.error = "Unable to add advert";
             ui.toggleError('error');
             ui.scrollTo('error');
         });
