@@ -257,52 +257,77 @@ app.post('/adverts', (request, response) => {
 /** get one advert-add **/
 app.get('/adverts/1', (request, response) => {
 	let adverts = {
-		advertId:4,
-		title:"Second ad",
-		description:"My description",
-		addTime:"2016-11-23T13:56:27",
-		views:0,
-		tags:[
-			{
-				name:"б/у",
-				id:1
+		"_embedded": {
+			"adverts": [
+				{
+					"advertId": 4,
+					"title": "Second ad",
+					"description": "My description",
+					"addTime": "2016-11-23T13:56:27",
+					"views": 0,
+					"tags": [
+						{
+							"name": "б/у",
+							"id": 1
+						},
+						{
+							"name": "зарубежный",
+							"id": 2
+						}
+					],
+					"price": 6546546,
+					"_links": {
+						"self": {
+							"href": "http://localhost:8080/adverts/4"
+						},
+						"image": {
+							"href": "http://localhost:8080/adverts/4/image"
+						}
+					},
+					"owner": {
+						"name": "Bodya",
+						"surname": "Fedoronchuk",
+						"phone": "752 25 50",
+						"email": "haistler@ukr.net",
+						"id": 1
+					},
+					"region": {
+						"name": "Одесская область",
+						"id": 1
+					},
+					"country": {
+						"name": "Украина",
+						"id": 1
+					},
+					"category": {
+						"name": "Автомобили",
+						"id": 1
+					},
+					"subcategory": {
+						"name": "Легковые",
+						"id": 1
+					},
+					"marker": {
+						"name": "Срочно",
+						"id": 1
+					},
+					"currency": {
+						"abbreviation": "долл",
+						"id": 3
+					}
+				}
+			]
+		},
+		"_links": {
+			"firstPage": {
+				"href": "http://localhost:8080/adverts?page=1&size=1"
 			},
-			{
-				name:"зарубежный",
-				id:2
+			"currentPage": {
+				"href": "http://localhost:8080/adverts?page=3&size=1"
+			},
+			"lastPage": {
+				"href": "http://localhost:8080/adverts?page=4&size=1"
 			}
-		],
-		price:25.56,
-		owner:{
-			name:"Bodya",
-			surname:"Fedoronchuk",
-			phone:"752 25 50",
-			email:"haistler@ukr.net",
-			id:1
-		},
-		region:{
-			name:"Одесская область",
-			id:1
-		},
-		country:{
-			name:"Украина",
-			id:1
-		},
-		category:{
-			name:"Автомобили",
-			id:1
-		},
-		subcategory:{
-			name:"Легковые",
-			id:1
-		},
-		marker:{
-			name:"Срочно",
-			id:1
-		},
-		currency:{
-			abbreviation:"грн",
-			id:1
 		}
 	};
 	response.send(adverts);

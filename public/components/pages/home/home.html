@@ -6,11 +6,12 @@
             <div class="items-block-header">
                 <h2 class="items-block-h2">Недавние объявления</h2>
             </div>
+            <div ng-include="'/components/partials/error-block.html'" onload="showError()" ng-show="error"></div>
             <div class="post" ng-repeat="advert in adverts">
                 <div class="post-description">
                     <h3 class="post-title">{{advert.title}}</h3>
                     <div class="image-block">
-                        <img src={{advert._links.image.href}} alt="Изображение товара" class="post-main-image">
+                        <img ng-src={{advert._links.image.href}} alt="Изображение товара" class="post-main-image">
                     </div>
                     <div class="description">
                         {{advert.description}}
@@ -37,9 +38,9 @@
             </div>
         </div>
         <div class="page-navigation-block">
-            <a href="#" id="prev" class="page-navigation-link" ng-show="prev"> < </a>
+            <a href="" id="prev" class="page-navigation-link" ng-show="prev" ng-click="prevPage()"> < </a>
             <div id="cur" class="page-navigation-link" ng-show="cur"> {{currentPage}} </div>
-            <a href="#" id="next" class="page-navigation-link" ng-show="next"> > </a>
+            <a href="" id="next" class="page-navigation-link" ng-show="next" ng-click="nextPage()"> > </a>
         </div>
     </div>
 </div>

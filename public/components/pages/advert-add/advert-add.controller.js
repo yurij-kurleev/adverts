@@ -3,7 +3,7 @@
 let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
     $scope.user = $cookies.getObject('user');
     if(!$scope.user && ~$window.location.href.indexOf("#/adverts/add")){
-        $window.location.href = '#/home';
+        $window.location.href = '#/adverts/1';
     }
 
     advert.getCategories().success((response) => {
@@ -39,7 +39,7 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
     $scope.unauthorize = () => {
         auth.unauthorize();
         delete $scope.user;
-        $window.location.href = '#/home';
+        $window.location.href = '#/adverts/1';
     };
 
     $scope.scrollTo = () => {

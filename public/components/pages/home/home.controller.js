@@ -1,6 +1,6 @@
 'use strict';
 
-let homeController = ($scope, $cookies, auth, ui, home, $routeParams) => {
+let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window) => {
     $scope.currentPage = $routeParams.pageId;
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
@@ -8,13 +8,19 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams) => {
     home.getAdvertsByPage($scope.currentPage).success((response) => {
         $scope.adverts = response._embedded.adverts;
         let lastPage = getPageFromUrl(response._links.lastPage.href);
-        $scope.prev = lastPage > $scope.currentPage;
-        $scope.next = 1 < $scope.currentPage;
-        $scope.cur = 1 == lastPage;
+        $scope.next = lastPage > $scope.currentPage;
+        $scope.prev = 1 < $scope.currentPage;
+        $scope.cur = 1 != lastPage;
     })
-    .error(() => {
-
+    .error((response) => {
+        $scope.error = "No adverts found";
+        console.log(response);
     });
+
+    $scope.showError = () => {
+        ui.scrollTo('error');
+        ui.toggleError('error');
+    };
 
     $scope.toggleAuthDialog = ui.toggleAuthDialog;
 
@@ -36,9 +42,20 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams) => {
             console.log(response);
         });
     };
+
     $scope.unauthorize = () => {
         auth.unauthorize();
         delete $scope.user;
+    };
+
+    $scope.nextPage = () => {
+        $scope.currentPage++;
+        $window.location.href = "#/adverts/" + $scope.currentPage;
+    };
+
+    $scope.prevPage = () => {
+        $scope.currentPage--;
+        $window.location.href = "#/adverts/" + $scope.currentPage;
     };
 
     let getPageFromUrl = (url) => {
@@ -54,7 +71,8 @@ homeController.$inject = [
     'auth',
     'ui',
     'home',
-    '$routeParams'
+    '$routeParams',
+    '$window'
 ];
 
 angular.module('app').controller('homeController', homeController);
