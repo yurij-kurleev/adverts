@@ -52,8 +52,8 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
             let tmp = $scope.formData.tags.split('#');
             delete tmp[0];
             $scope.formData.tags = [];
-            for(let item in tmp){
-                $scope.formData.tags.push({name: item});
+            for(let i in tmp){
+                $scope.formData.tags.push({name: tmp[i]});
             }
         }
         else $scope.formData.tags = [];
