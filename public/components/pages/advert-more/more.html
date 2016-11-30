@@ -12,7 +12,7 @@
                     Категория: <a href="#/adverts/category/{{advert.category.id}}" class="category-link">{{advert.category.name}}</a>
                     <a href="#/adverts/subcategory/{{advert.subcategory.id}}" class="category-link">{{advert.subcategory.name}}</a>
 
-                    <a href="#/adverts/edit/{{advert.id}}" class="edit-btn" id="user-edit">Редактировать</a>
+                    <a href="#/adverts/edit/{{advert.id}}" class="edit-btn" id="user-edit" ng-show="advert.owner.id == user.id">Редактировать</a>
                 </div>
             </div>
             <div class="post-more-main-block">
@@ -51,7 +51,7 @@
                 <div class="post-footer">
                     <div class="post-more-time">
                         <img src="../../../img/dateIco.png" alt="dateIco">
-                        12-08-2016
+                        {{advert.addTime}}
                     </div>
                     <div class="post-more-author">
                         <img src="../../../img/authorIco.png" alt="authorIco">

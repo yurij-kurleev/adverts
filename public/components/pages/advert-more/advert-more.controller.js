@@ -6,6 +6,7 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
 
     advertMore.getAdvert($routeParams.id).success((response)=>{
         $scope.advert = response;
+        $scope.advert.addTime = $scope.advert.addTime.replace(/T/, " ");
         if($scope.user == $scope.advert.owner.id || !$scope.user){
             return;
         } else {
@@ -23,7 +24,6 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
     };
 
     $scope.showError = () => {
-        //ui.scrollTo('error');
         ui.toggleError('error');
     };
 
