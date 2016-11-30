@@ -17,13 +17,13 @@
             </div>
             <div class="post-more-main-block">
                 <div class="photo-container">
-                    <img ng-src="advert._links.image.href" alt="Фотографии товара" class="photo">
+                    <img ng-src={{advert._links.image.href}} alt="Фотография товара" class="photo">
                 </div>
                 <hr class="hr">
                 <div class="shortcut-info-block">
                     <div class="contacts-info">
                         <div class="avatar">
-                            <img ng-src="advert.owner._links.image.href" alt="" class="avatar-image">
+                            <img ng-src={{advert.owner._links.image.href}} alt="" class="avatar-image">
                         </div>
                         <div class="contacts">
                             Контактная информация:
@@ -32,10 +32,10 @@
                             <b>Email</b>: {{advert.owner.email}}
                         </div>
                         <div class="contacts-row">
-                            <b>Регион</b>: {{advert.owner.region.name}}
+                            <b>Регион</b>: {{advert.region.name}}
                         </div>
                         <div class="contacts-row">
-                            <b>Страна</b>: {{advert.owner.country.name}}
+                            <b>Страна</b>: {{advert.country.name}}
                         </div>
                         <div class="telephone-block">
                             <input type="text" class="telephone" ng-value="advert.owner.phone" readonly>

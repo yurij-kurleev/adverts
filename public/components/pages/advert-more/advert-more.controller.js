@@ -23,7 +23,7 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
     };
 
     $scope.showError = () => {
-        ui.scrollTo('error');
+        //ui.scrollTo('error');
         ui.toggleError('error');
     };
 
