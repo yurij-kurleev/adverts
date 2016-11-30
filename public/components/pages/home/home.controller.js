@@ -7,9 +7,9 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window) =
 
     home.getAdvertsByPage($scope.currentPage).success((response) => {
         $scope.adverts = response._embedded.adverts;
-        for(let advert in $scope.adverts){
-            advert.addTime = advert.addTime.replace(/T/, " ");
-            advert.description = advert.description.substr(0, 200);
+        for(let i = 0; i < $scope.adverts.length; i++){
+            $scope.adverts.i.addTime = $scope.adverts.i.addTime.replace(/T/, " ");
+            $scope.adverts.i.description = $scope.adverts.i.description.substr(0, 200);
         }
         let lastPage = getPageFromUrl(response._links.lastPage.href);
         $scope.next = lastPage > $scope.currentPage;
