@@ -8,8 +8,8 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window) =
     home.getAdvertsByPage($scope.currentPage).success((response) => {
         $scope.adverts = response._embedded.adverts;
         for(let i = 0; i < $scope.adverts.length; i++){
-            $scope.adverts.i.addTime = $scope.adverts.i.addTime.replace(/T/, " ");
-            $scope.adverts.i.description = $scope.adverts.i.description.substr(0, 200);
+            $scope.adverts[i].addTime = $scope.adverts[i].addTime.replace(/T/, " ");
+            $scope.adverts[i].description = $scope.adverts[i].description.substr(0, 200);
         }
         let lastPage = getPageFromUrl(response._links.lastPage.href);
         $scope.next = lastPage > $scope.currentPage;
@@ -18,9 +18,6 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window) =
     })
     .error((response) => {
         $scope.error = "No adverts found";
-        if($scope.currentPage < 1){
-            $window.location.href = "#/adverts/1";
-        }
         console.log(response);
     });
 

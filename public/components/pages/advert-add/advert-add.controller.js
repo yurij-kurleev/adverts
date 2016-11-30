@@ -60,7 +60,7 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
         $scope.formData.login = $scope.user.login;
         $scope.formData.password = $scope.user.password;
         advert.sendForm($scope.formData).success((response) => {
-            $window.location.href = '#/home';
+            $window.location.href = '#/adverts/1';
             ui.scrollTo('logo-link');
         })
         .error((response) => {

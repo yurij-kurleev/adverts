@@ -17,7 +17,7 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/profile/profile.html',
 			controller: 'profileController'
 		})
-		.when('/adverts/add', {
+		.when('/advert/add', {
 			templateUrl: 'components/pages/advert-add/add-advert.html',
 			controller: 'advertAddController'
 		})
