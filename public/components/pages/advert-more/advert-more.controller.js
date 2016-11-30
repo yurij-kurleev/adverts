@@ -1,13 +1,30 @@
 'use strict';
 
-let advertMoreController = ($scope, $cookies, auth, ui, $routeParams) => {
+let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, advertMore) => {
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
-    $scope.id = $routeParams.id;
-    console.log($scope.id);
+
+    advertMore.getAdvert($routeParams.id).success((response)=>{
+        $scope.advert = response;
+        if($scope.user == $scope.advert.owner.id || !$scope.user){
+            return;
+        } else {
+            advertMore.addView($scope.advert._links.incrementViews.href);
+        }
+    })
+    .error((response) => {
+        console.log(response);
+        $window.location.href = "#/adverts/1";
+        $scope.error = "Данный пост сейчас недоступен!";
+    });
 
     $scope.scrollTo = () => {
         ui.scrollTo('logo-link', 500);
+    };
+
+    $scope.showError = () => {
+        ui.scrollTo('error');
+        ui.toggleError('error');
     };
 
     $scope.toggleAuthDialog = ui.toggleAuthDialog;
@@ -42,7 +59,9 @@ advertMoreController.$inject = [
     '$cookies',
     'auth',
     'ui',
-    '$routeParams'
+    '$routeParams',
+    '$window',
+    'advertMore'
 ];
 
 angular.module('app').controller('advertMoreController', advertMoreController);

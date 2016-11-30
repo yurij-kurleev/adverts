@@ -254,13 +254,13 @@ app.post('/adverts', (request, response) => {
 	response.send("OK");
 });
 
-/** get one advert-add **/
-app.get('/adverts/1', (request, response) => {
+/** get advert page **/
+app.get('/adverts/page/1', (request, response) => {
 	let adverts = {
 		"_embedded": {
 			"adverts": [
 				{
-					"advertId": 4,
+					"id": 1,
 					"title": "Second ad",
 					"description": "My description",
 					"addTime": "2016-11-23T13:56:27",
@@ -333,3 +333,64 @@ app.get('/adverts/1', (request, response) => {
 	response.send(adverts);
 });
 
+/** get advert page **/
+app.get('/adverts/1', (request, response) => {
+	let advert = {
+		"title": "New ad",
+		"description": "My description. Lorem ipsum.",
+		"addTime": "2016-11-30T19:40:56",
+		"views": 0,
+		"tags": [
+			{
+				"name": "б/у",
+				"id": 1
+			},
+			{
+				"name": "random_tag",
+				"id": 3
+			}
+		],
+		"price": 601,
+		"_links": {
+			"self": {
+				"href": "http://localhost:8080/adverts/25"
+			},
+			"incrementViews": {
+				"href": "http://localhost:8080/adverts/25/incrementViews"
+			}
+		},
+		"id": 1,
+		"owner": {
+			"name": "Bodya",
+			"surname": "Fedoronchuk",
+			"phone": "752 25 50",
+			"email": "haistler@ukr.net",
+			"id": 1
+		},
+		"region": {
+			"name": "Одесская область",
+			"id": 1
+		},
+		"country": {
+			"name": "Украина",
+			"id": 1
+		},
+		"category": {
+			"name": "Автомобили",
+			"id": 1
+		},
+		"subcategory": {
+			"name": "Легковые",
+			"id": 1
+		},
+		"marker": {
+			"name": "Срочно",
+			"id": 1
+		},
+		"currency": {
+			"abbreviation": "долл",
+			"id": 3
+		}
+	};
+	response.send(advert);
+});

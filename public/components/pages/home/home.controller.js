@@ -11,6 +11,12 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window) =
         $scope.next = lastPage > $scope.currentPage;
         $scope.prev = 1 < $scope.currentPage;
         $scope.cur = 1 != lastPage;
+        if($scope.currentPage > lastPage){
+            $window.location.href = "#/adverts/" + lastPage;
+        }
+        if($scope.currentPage < 1){
+            $window.location.href = "#/adverts/1";
+        }
     })
     .error((response) => {
         $scope.error = "No adverts found";

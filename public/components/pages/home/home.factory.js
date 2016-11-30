@@ -4,8 +4,8 @@ let home = ($http) => {
     let getAdvertsByPage = (page, limit = 2) => {
         return $http({
             method: 'GET',
-            //url: '/adverts?page=' + page + '&size=' + limit
-            url: '/adverts/1'
+            url: '/adverts?page=' + page + '&size=' + limit
+            //url: '/adverts/page/1'
         });
     };
 
