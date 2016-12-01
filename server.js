@@ -333,7 +333,7 @@ app.get('/adverts/page/1', (request, response) => {
 	response.send(adverts);
 });
 
-/** get advert page **/
+/** get advert **/
 app.get('/adverts/1', (request, response) => {
 	let advert = {
 		"title": "New ad",
