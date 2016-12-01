@@ -8,6 +8,10 @@ let profileController = ($scope, $cookies, auth, $window, profile) => {
 
     profile.getUserPosts($scope.user._links.adverts.href).success((response) => {
         $scope.adverts = response._embedded.adverts;
+        for(let i = 0; i < $scope.adverts.length; i++){
+            $scope.adverts[i].addTime = $scope.adverts[i].addTime.replace(/T/, " ");
+            $scope.adverts[i].description = $scope.adverts[i].description.substr(0, 200);
+        }
     })
     .error((response) => {
         $scope.adverts = [];
