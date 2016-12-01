@@ -906,6 +906,10 @@ body{
     .menu:hover .menu-item{
         display: block;
     }
+
+    #tags-block{
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {

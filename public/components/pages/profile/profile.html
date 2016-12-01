@@ -19,38 +19,35 @@
             <hr class="hr">
             <a href="" class="edit-btn">Редактировать профиль</a>
         </div>
-        <div class="items-block-header">
+        <div class="items-block-header" ng-show="adverts">
             <h2 class="items-block-h2">Мои объявления</h2>
         </div>
-
-        <div class="post">
+        <div class="post" ng-repeat="advert in adverts">
             <div class="post-description">
-                <h3 class="post-title">Post title</h3>
+                <h3 class="post-title">{{advert.title}}</h3>
                 <div class="image-block">
-                    <img src="">
+                    <img ng-src={{advert._links.image.href}}>
                 </div>
                 <div class="description">
-                    Post description
+                    {{advert.description}}
                 </div>
             </div>
             <div class="post-rating">
-
-                <div class="delete-post"> X </div>
-
-                <div class="price">150 грн.</div>
+                <div class="delete-post" ng-show="user.id == advert.owner.id"> X </div>
+                <div class="price">{{advert.price + " " + advert.currency.abbreviation}}</div>
             </div>
             <div class="hr"><hr/></div>
             <div class="post-footer">
                 <div class="post-time">
                     <img src="../../../img/dateIco.png" alt="dateIco">
-                    19.11.2016
+                    {{advert.addTime}}
                 </div>
                 <div class="post-author">
                     <img src="../../../img/authorIco.png" alt="authorIco">
-                    Юрий Курлеев
+                    {{advert.owner.name + " " + advert.owner.surname}}
                 </div>
                 <div class="post-readmore-btn">
-                    <a href="" class="post-readmore">Подробнее</a>
+                    <a href="#/adverts/more/{{advert.id}}" class="post-readmore">Подробнее</a>
                 </div>
             </div>
         </div>
