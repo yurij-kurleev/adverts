@@ -8,6 +8,7 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
 
     advert.getCategories().success((response) => {
         $scope.categories = response._embedded.categories;
+        ui.scrollTo('scrollTo');
     })
     .error(() => {
         console.log("Error: can't get categories");

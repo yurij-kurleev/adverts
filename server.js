@@ -106,6 +106,9 @@ app.get('/users/login', (request, response) => {
 			},
 			image: {
 				href: "/public/img/nastol.com.ua-118626.jpg"
+			},
+			adverts: {
+				"href": "http://localhost:8080/users/1/adverts"
 			}
 		},
 		id: 1

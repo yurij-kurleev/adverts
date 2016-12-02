@@ -29,6 +29,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/advert-update/update.html',
 			controller: 'advertUpdateController'
 		})
+		.when('/profile/edit/:id', {
+			templateUrl: 'components/pages/profile-edit/update.html',
+			controller: 'profileEditController'
+		})
 		.otherwise({
 			redirectTo: '/adverts/1'
 		});

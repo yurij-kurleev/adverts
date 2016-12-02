@@ -9,10 +9,29 @@
             <div ng-include="'/components/partials/error-block.html'" onload="showError()" ng-show="error"></div>
             <div class="advert-form-block-main">
                 <div class="post-category-header">
-                    Категория: <a href="#/adverts/category/{{advert.category.id}}" class="category-link">{{advert.category.name}}</a>
-                    <a href="#/adverts/subcategory/{{advert.subcategory.id}}" class="category-link">{{advert.subcategory.name}}</a>
-
-                    <a href="#/adverts/edit/{{advert.id}}" class="edit-btn" id="user-edit" ng-show="advert.owner.id == user.id">Редактировать</a>
+                    <div class="category-start">
+                        Категория:
+                        <a href="#/adverts/category/{{advert.category.id}}" class="category-link">
+                            {{advert.category.name}}
+                        </a>
+                        <a href="#/adverts/subcategory/{{advert.subcategory.id}}"
+                           class="category-link">
+                            {{advert.subcategory.name}}
+                        </a>
+                    </div>
+                    <div class="marker-end">
+                        <a href="#/adverts/subcategory/{{advert.subcategory.id}}"
+                           class="marker-link">
+                            {{advert.marker.name}}
+                        </a>
+                    </div>
+                    <div class="tags-post">
+                        Теги: <span ng-repeat="tag in advert.tags"><a href="#/adverts/tag/{{tag.id}}">#{{tag.name}}</a> </span>
+                    </div>
+                    <a href="#/adverts/edit/{{advert.id}}"
+                       class="edit-btn" id="user-edit" ng-show="advert.owner.id == user.id">
+                        Редактировать
+                    </a>
                 </div>
             </div>
             <div class="post-more-main-block">

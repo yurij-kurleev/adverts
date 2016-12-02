@@ -46,6 +46,7 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
             }
             $scope.user.registrationDate = $scope.user.registrationDate.split("T");
             $cookies.putObject('user', $scope.user);
+            console.log($scope.user);
             $scope.toggleAuthDialog();
         })
             .error((response) => {

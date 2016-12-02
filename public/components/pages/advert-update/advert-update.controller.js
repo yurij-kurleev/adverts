@@ -7,6 +7,7 @@ let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth,
     }
 
     advertUpdate.getAdvert($routeParams.id).success((response)=>{
+        ui.scrollTo('scrollTo');
         $scope.advert = response;
         $scope.advert.addTime = $scope.advert.addTime.replace(/T/, " ");
         let tags = "";
@@ -14,9 +15,10 @@ let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth,
             tags += "#" + $scope.advert.tags[i].name;
         }
         $scope.advert.tags = tags;
-        if($scope.user != $scope.advert.owner.id || !$scope.user){
-            //$window.location.href = "#/adverts/1";
+        if($scope.user.id != $scope.advert.owner.id || !$scope.user){
+            $window.location.href = "#/adverts/1";
         }
+        delete $scope.advert.addTime;
     })
     .error((response) => {
         console.log(response);

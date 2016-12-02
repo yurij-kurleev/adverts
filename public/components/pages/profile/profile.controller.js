@@ -14,7 +14,6 @@ let profileController = ($scope, $cookies, auth, $window, profile) => {
         }
     })
     .error((response) => {
-        $scope.adverts = [];
         console.log(response);
     });
 

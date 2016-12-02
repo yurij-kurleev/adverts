@@ -536,6 +536,8 @@ body{
 }
 
 .post-category-header{
+    display: flex;
+    flex-flow: row wrap;
     flex: 1 100%;
     margin: 10px 2%;
 }
@@ -651,7 +653,11 @@ body{
 #user-edit{
     display: block;
     margin-right: 0;
-    margin-left: 70%;
+    margin-left: 77%;
+}
+
+#post-edit{
+
 }
 
 .user-photo{
@@ -683,6 +689,36 @@ body{
     font-size: 0.8rem;
     color: #5e5e5e;
     flex: 1 100%;
+}
+
+.marker-end{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    margin-right: 1%;
+}
+
+.category-start{
+    justify-content: flex-start;
+    flex: 3;
+}
+
+.marker-link{
+    border: 2px solid #761c19;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 10%;
+    color: #fff;
+    background-color: #761c19;
+}
+
+.marker-link:hover{
+    text-decoration: underline;
+}
+
+.tags-post{
+    justify-content: flex-start;
+    flex: 4 100%;
 }
 
 @media (max-width: 1200px) {

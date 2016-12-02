@@ -7,6 +7,7 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
     }
 	register.getCountries().success((response) => {
 		$scope.countries = response._embedded.countries;
+        ui.scrollTo('scrollTo');
 	})
 	.error(() => {
 		console.log('Error: cannot get countries');
@@ -41,6 +42,7 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
             $scope.error = "Unable to register";
             ui.toggleError('error');
             ui.scrollTo('error');
+            console.log(response);
         });
 	};
     $scope.toggleAuthDialog = ui.toggleAuthDialog;
