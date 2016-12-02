@@ -22,12 +22,15 @@ let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit) =
         });
     };
 
-    $scope.formData = {};
+    $scope.authData = {
+        login: $scope.user.login,
+        password: $scope.user.password
+    };
     $scope.sendForm = () => {
-        profileEdit.sendForm($scope.formData, $scope.user._links.self.href).success((response) => {
+        profileEdit.sendForm($scope.user, $scope.user._links.self.href).success((response) => {
             $scope.user = response;
-            $scope.user.login = $scope.formData.login;
-            $scope.user.password = $scope.formData.password;
+            $scope.user.login = $scope.authData.login;
+            $scope.user.password = $scope.authData.password;
             if($scope.user.admin){
                 $scope.user.role = "Администраторы";
             } else {
