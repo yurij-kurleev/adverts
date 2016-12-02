@@ -43,6 +43,9 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window) =
         })
         .error((response) => {
             console.log(response);
+            $scope.error = "Неверный логин или пароль!";
+            $scope.showError();
+            $scope.toggleAuthDialog();
         });
     };
 

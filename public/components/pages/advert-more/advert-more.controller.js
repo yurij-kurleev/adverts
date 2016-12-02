@@ -50,6 +50,9 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
             $scope.toggleAuthDialog();
         })
             .error((response) => {
+                $scope.error = "Неверный логин или пароль!";
+                $scope.showError();
+                $scope.toggleAuthDialog();
                 console.log(response);
             });
     };

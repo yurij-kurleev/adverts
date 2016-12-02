@@ -62,9 +62,9 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
         })
         .error((response) => {
             console.log(response);
-            $scope.error = "Unable to authorize";
-            ui.toggleError('error');
-            ui.scrollTo('error');
+            $scope.error = "Неверный логин или пароль!";
+            ui.showError();
+            $scope.toggleAuthDialog();
         });
         ui.toggleAuthDialog();
     };
