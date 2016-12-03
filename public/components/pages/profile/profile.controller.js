@@ -1,7 +1,8 @@
 'use strict';
 
-let profileController = ($scope, $cookies, auth, $window, profile) => {
+let profileController = ($scope, $cookies, auth, $window, profile, aside) => {
     $scope.user = $cookies.getObject('user');
+    $scope.blockTitle = "Категории";
     if(!$scope.user && ~$window.location.href.indexOf("#/profile")){
         $window.location.href = '#/adverts/1';
     }
@@ -17,10 +18,21 @@ let profileController = ($scope, $cookies, auth, $window, profile) => {
         console.log(response);
     });
 
+    aside.getCategories().success((response) => {
+        $scope.categories = response._embedded.categories;
+    })
+    .error(() => {
+        console.log("Error: can't get categories");
+    });
+
     $scope.unauthorize = () => {
         auth.unauthorize();
         delete $scope.user;
         $window.location.href = '#/adverts/1';
+    };
+
+    $scope.getAdvertCategory = ($event) => {
+        $cookies.put('category', $event.target.text);
     };
 };
 
@@ -29,7 +41,8 @@ profileController.$inject = [
     '$cookies',
     'auth',
     '$window',
-    'profile'
+    'profile',
+    'aside'
 ];
 
 angular.module('app').controller('profileController', profileController);

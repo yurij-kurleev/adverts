@@ -11,22 +11,22 @@
                 <div class="post-category-header">
                     <div class="category-start">
                         Категория:
-                        <a href="#/adverts/category/{{advert.category.id}}" class="category-link">
+                        <a href="#/adverts/categories/{{advert.category.id}}/1" class="category-link">
                             {{advert.category.name}}
                         </a>
-                        <a href="#/adverts/subcategory/{{advert.subcategory.id}}"
+                        <a href="#/adverts/subcategories/{{advert.subcategory.id}}/1"
                            class="category-link">
                             {{advert.subcategory.name}}
                         </a>
                     </div>
                     <div class="marker-end">
-                        <a href="#/adverts/marker/{{advert.marker.id}}"
+                        <a href="#/adverts/markers/{{advert.marker.id}}/1"
                            class="marker-link">
                             {{advert.marker.name}}
                         </a>
                     </div>
                     <div class="tags-post">
-                        Теги: <span ng-repeat="tag in advert.tags"><a href="#/adverts/tag/{{tag.id}}">#{{tag.name}}</a> </span>
+                        Теги: <span ng-repeat="tag in advert.tags"><a href="#/adverts/tags/{{tag.id}}/1">#{{tag.name}}</a> </span>
                     </div>
                     <a href="#/adverts/edit/{{advert.id}}"
                        class="edit-btn" id="user-edit" ng-show="advert.owner.id == user.id">

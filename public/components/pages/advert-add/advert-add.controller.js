@@ -2,9 +2,14 @@
 
 let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
     $scope.user = $cookies.getObject('user');
+    $scope.blockTitle = "Категории";
     if(!$scope.user && ~$window.location.href.indexOf("#/adverts/add")){
         $window.location.href = '#/adverts/1';
     }
+
+    $scope.getAdvertCategory = ($event) => {
+        $cookies.put('category', $event.target.text);
+    };
 
     advert.getCategories().success((response) => {
         $scope.categories = response._embedded.categories;

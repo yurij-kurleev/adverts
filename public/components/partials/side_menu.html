@@ -18,13 +18,14 @@
     <div class="menu-block">
         <div class="menu">
             <div class="menu-header">
-                Категории
+                {{blockTitle}}
             </div>
-
-            <div class="menu-item">
-                <a href="/index/category/" class="menu-link">Test</a>
+            <div class="menu-item" ng-repeat="category in categories">
+                <a href="#/adverts/categories/{{category.id}}/1" class="menu-link"
+                   ng-click="getAdvertCategory($event)">
+                    {{category.name}}
+                </a>
             </div>
-
         </div>
     </div>
     <div class="menu-block" id="tags-block">

@@ -1,7 +1,8 @@
 'use strict';
 
-let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, advertMore) => {
+let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, advertMore, aside) => {
     $scope.user = $cookies.getObject('user');
+    $scope.blockTitle = "Категории";
     $scope.formData = {};
 
     advertMore.getAdvert($routeParams.id).success((response)=>{
@@ -18,6 +19,17 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
         $window.location.href = "#/adverts/1";
         $scope.error = "Данный пост сейчас недоступен!";
     });
+
+    aside.getCategories().success((response) => {
+        $scope.categories = response._embedded.categories;
+    })
+    .error(() => {
+        console.log("Error: can't get categories");
+    });
+
+    $scope.getAdvertCategory = ($event) => {
+        $cookies.put('category', $event.target.text);
+    };
 
     $scope.scrollTo = () => {
         ui.scrollTo('logo-link', 500);
@@ -65,7 +77,8 @@ advertMoreController.$inject = [
     'ui',
     '$routeParams',
     '$window',
-    'advertMore'
+    'advertMore',
+    'aside'
 ];
 
 angular.module('app').controller('advertMoreController', advertMoreController);

@@ -1,7 +1,8 @@
 'use strict';
 
-let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit) => {
+let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit, aside) => {
     $scope.user = $cookies.getObject('user');
+    $scope.blockTitle = "Категории";
     if(!$scope.user){
         $window.location.href = '#/adverts/1';
     }
@@ -12,6 +13,17 @@ let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit) =
     .error(() => {
         console.log('Error: cannot get countries');
     });
+
+    aside.getCategories().success((response) => {
+        $scope.categories = response._embedded.categories;
+    })
+    .error(() => {
+        console.log("Error: can't get categories");
+    });
+
+    $scope.getAdvertCategory = ($event) => {
+        $cookies.put('category', $event.target.text);
+    };
 
     $scope.getRegions = () => {
         profileEdit.getRegions($scope.selected).success((response) => {
@@ -62,7 +74,8 @@ profileEditController.$inject = [
     '$cookies',
     'auth',
     'ui',
-    'profileEdit'
+    'profileEdit',
+    'aside'
 ];
 
 angular.module('app').controller('profileEditController', profileEditController);

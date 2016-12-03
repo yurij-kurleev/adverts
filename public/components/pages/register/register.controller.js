@@ -1,7 +1,8 @@
 'use strict';
 
-let registerController = ($scope, register, $window, ui, $cookies, auth) => {
+let registerController = ($scope, register, $window, ui, $cookies, auth, aside) => {
     $scope.user = $cookies.getObject('user');
+    $scope.blockTitle = "Категории";
     if($scope.user){
         $window.location.href = '#/home';
     }
@@ -12,6 +13,17 @@ let registerController = ($scope, register, $window, ui, $cookies, auth) => {
 	.error(() => {
 		console.log('Error: cannot get countries');
 	});
+
+    aside.getCategories().success((response) => {
+        $scope.categories = response._embedded.categories;
+    })
+    .error(() => {
+        console.log("Error: can't get categories");
+    });
+
+    $scope.getAdvertCategory = ($event) => {
+        $cookies.put('category', $event.target.text);
+    };
 
     $scope.getRegions = () => {
         register.getRegions($scope.selected).success((response) => {
@@ -75,7 +87,8 @@ registerController.$inject = [
     '$window',
 	'ui',
     '$cookies',
-    'auth'
+    'auth',
+    'aside'
 ];
 
 angular.module('app').controller('registerController', registerController);

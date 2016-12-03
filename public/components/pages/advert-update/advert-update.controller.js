@@ -1,7 +1,8 @@
 'use strict';
 
-let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth, ui, advert, $cookies) => {
+let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth, ui, advert, $cookies, aside) => {
     $scope.user = $cookies.getObject('user');
+    $scope.blockTitle = "Категории";
 
     advertUpdate.getAdvert($routeParams.id).success((response)=>{
         ui.scrollTo('scrollTo');
@@ -23,8 +24,15 @@ let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth,
         $scope.error = "Данный пост сейчас недоступен!";
     });
 
-    $scope.scrollTo = () => {
-        ui.scrollTo('logo-link', 500);
+    aside.getCategories().success((response) => {
+        $scope.categories = response._embedded.categories;
+    })
+    .error(() => {
+        console.log("Error: can't get categories");
+    });
+
+    $scope.getAdvertCategory = ($event) => {
+        $cookies.put('category', $event.target.text);
     };
 
     $scope.unauthorize = () => {
@@ -96,7 +104,8 @@ advertUpdateController.$inject = [
     'auth',
     'ui',
     'advert',
-    '$cookies'
+    '$cookies',
+    'aside'
 ];
 
 angular.module('app').controller('advertUpdateController', advertUpdateController);

@@ -5,7 +5,6 @@ let home = ($http) => {
         return $http({
             method: 'GET',
             url: '/adverts?page=' + page + '&size=' + limit
-            //url: '/adverts/page/1'
         });
     };
 

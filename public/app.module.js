@@ -33,6 +33,14 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/profile-edit/update.html',
 			controller: 'profileEditController'
 		})
+		.when('/adverts/categories/:categoryId/:pageId', {
+			templateUrl: 'components/pages/advert-category/advert-category.html',
+			controller: 'advertCategoryController'
+		})
+		.when('/adverts/subcategories/:subcategoryId/:pageId', {
+			templateUrl: '',
+			controller: ''
+		})
 		.otherwise({
 			redirectTo: '/adverts/1'
 		});

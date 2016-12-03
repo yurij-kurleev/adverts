@@ -1,16 +1,13 @@
 'use strict';
 
-let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, aside) => {
+let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $routeParams, $window, aside) => {
     $scope.currentPage = $routeParams.pageId;
+    $scope.categoryId = $routeParams.categoryId;
+    $scope.blockTitle = $cookies.get('category');
     $scope.user = $cookies.getObject('user');
-    $scope.blockTitle = "Категории";
     $scope.formData = {};
 
-    $scope.getAdvertCategory = ($event) => {
-        $cookies.put('category', $event.target.text);
-    };
-
-    home.getAdvertsByPage($scope.currentPage).success((response) => {
+    advertCategory.getAdvertsByCategory($scope.currentPage, $scope.categoryId).success((response) => {
         $scope.adverts = response._embedded.adverts;
         for(let i = 0; i < $scope.adverts.length; i++){
             $scope.adverts[i].addTime = $scope.adverts[i].addTime.replace(/T/, " ");
@@ -26,16 +23,12 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
         console.log(response);
     });
 
-    aside.getCategories().success((response) => {
+    aside.getSubcategories().success((response) => {
         $scope.categories = response._embedded.categories;
     })
     .error(() => {
-        console.log("Error: can't get categories");
+        console.log("Error: can't get subcategories");
     });
-
-    $scope.getAdvertCategory = ($event) => {
-        $cookies.put('category', $event.target.text);
-    };
 
     $scope.showError = () => {
         ui.toggleError('error');
@@ -57,12 +50,12 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
             $cookies.putObject('user', $scope.user);
             ui.toggleAuthDialog();
         })
-        .error((response) => {
-            console.log(response);
-            $scope.error = "Неверный логин или пароль!";
-            $scope.showError();
-            $scope.toggleAuthDialog();
-        });
+            .error((response) => {
+                console.log(response);
+                $scope.error = "Неверный логин или пароль!";
+                $scope.showError();
+                $scope.toggleAuthDialog();
+            });
     };
 
     $scope.unauthorize = () => {
@@ -87,15 +80,16 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
         }
     };
 };
-homeController.$inject = [
+
+advertCategoryController.$inject = [
     '$scope',
     '$cookies',
     'auth',
     'ui',
-    'home',
+    'advertCategory',
     '$routeParams',
     '$window',
     'aside'
 ];
 
-angular.module('app').controller('homeController', homeController);
+angular.module('app').controller('advertCategoryController', advertCategoryController);
