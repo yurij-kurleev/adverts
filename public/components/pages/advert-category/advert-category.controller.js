@@ -23,8 +23,8 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
         console.log(response);
     });
 
-    aside.getSubcategories().success((response) => {
-        $scope.categories = response._embedded.categories;
+    aside.getSubcategories($scope.categoryId).success((response) => {
+        $scope.categories = response._embedded.subcategories;
     })
     .error(() => {
         console.log("Error: can't get subcategories");
@@ -65,12 +65,12 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
 
     $scope.nextPage = () => {
         $scope.currentPage++;
-        $window.location.href = "#/adverts/" + $scope.currentPage;
+        $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
     };
 
     $scope.prevPage = () => {
         $scope.currentPage--;
-        $window.location.href = "#/adverts/" + $scope.currentPage;
+        $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
     };
 
     let getPageFromUrl = (url) => {
