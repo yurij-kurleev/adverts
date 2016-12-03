@@ -2,14 +2,11 @@
 
 let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth, ui, advert, $cookies) => {
     $scope.user = $cookies.getObject('user');
-    if(!$scope.user && ~$window.location.href.indexOf("#/adverts/edit/")){//~ = n + 1
-        $window.location.href = '#/adverts/1';
-    }
 
     advertUpdate.getAdvert($routeParams.id).success((response)=>{
         ui.scrollTo('scrollTo');
         $scope.advert = response;
-        if($scope.user.id != $scope.advert.owner.id){
+        if(!$scope.user || $scope.user.id != $scope.advert.owner.id){
             $window.location.href = "#/adverts/1";
         }
         $scope.advert.addTime = $scope.advert.addTime.replace(/T/, " ");
