@@ -2,22 +2,22 @@
 
 let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth, ui, advert, $cookies) => {
     $scope.user = $cookies.getObject('user');
-    if(!$scope.user && ~$window.location.href.indexOf("#/adverts/edit/")){
+    if(!$scope.user && ~$window.location.href.indexOf("#/adverts/edit/")){//~ = n + 1
         $window.location.href = '#/adverts/1';
     }
 
     advertUpdate.getAdvert($routeParams.id).success((response)=>{
         ui.scrollTo('scrollTo');
         $scope.advert = response;
+        if($scope.user.id != $scope.advert.owner.id){
+            $window.location.href = "#/adverts/1";
+        }
         $scope.advert.addTime = $scope.advert.addTime.replace(/T/, " ");
         let tags = "";
         for(let i in $scope.advert.tags){
             tags += "#" + $scope.advert.tags[i].name;
         }
         $scope.advert.tags = tags;
-        if($scope.user.id != $scope.advert.owner.id || !$scope.user){
-            $window.location.href = "#/adverts/1";
-        }
         delete $scope.advert.addTime;
     })
     .error((response) => {
