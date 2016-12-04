@@ -36,10 +36,10 @@ let aside = ($http) => {
         });
     };
 
-    let getAdvertsByTag = (url) => {
+    let getAdvertsByTag = (page, tagName, limit = 2) => {
         return $http({
             method: 'GET',
-            url: url
+            url: '/adverts?page=' + page + '&size=' + limit + '&tagName=' + tagName
         });
     };
 

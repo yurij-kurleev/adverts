@@ -41,6 +41,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/advert-subcategory/advert-subcategory.html',
 			controller: 'advertSubcategoryController'
 		})
+        .when('/adverts/tags/:tagName/:pageId', {
+            templateUrl: 'components/pages/advert-tag/advert-tag.html',
+            controller: 'advertTagController'
+        })
 		.otherwise({
 			redirectTo: '/adverts/1'
 		});
