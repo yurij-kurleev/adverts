@@ -31,8 +31,6 @@ angular.module('app').factory('ui', () => {
     let toggleAuthDialog = () => {
 		let menu = document.getElementById('popup-form');
 		let layer = document.getElementById('dark-layout');
-		console.log(menu.style.display);
-		console.log(layer.style.display);
 		if(!menu.style.display || menu.style.display == "none"){
 			menu.style.display = "block";
 			layer.style.display = "block";
@@ -42,15 +40,27 @@ angular.module('app').factory('ui', () => {
 		}
 	};
 
-	let setTagSize = () => {
-
+	let setTagSize = (tagId, amount) => {
+		let tag = document.getElementById(tagId);
+        let fontSize = "";
+		if(amount <= 1){
+		    fontSize = "1rem";
+        }
+        if(amount > 1 && amount <= 4){
+            fontSize = "1.5rem";
+        }
+        if(amount > 4){
+            fontSize = "2rem";
+        }
+        tag.style.fontSize = fontSize;
 	};
 
 	return {
-		toggleClass: toggleClass,
-		toggleMenu: toggleMenu,
-		scrollTo: scrollTo,
-        toggleError: toggleError,
-		toggleAuthDialog: toggleAuthDialog,
+		toggleClass,
+		toggleMenu,
+		scrollTo,
+        toggleError,
+		toggleAuthDialog,
+        setTagSize
 	}
 });

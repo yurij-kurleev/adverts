@@ -150,6 +150,35 @@ app.get('/categories', (request, response) => {
 	response.send(categories);
 });
 
+/** tags **/
+app.get('/adverts/randomTags', (request, response) => {
+	let tags = [
+		{
+			"name": "hvgv",
+			"links": [
+				{
+					"rel": "adverts",
+					"href": "http://localhost:8080/adverts?page=1&size=2&tagName=hvgv"
+				}
+			],
+			"id": 7,
+			"advertsAmount": 10
+		},
+		{
+			"name": "random_tag",
+			"links": [
+				{
+					"rel": "adverts",
+					"href": "http://localhost:8080/adverts?page=1&size=2&tagName=random_tag"
+				}
+			],
+			"id": 3,
+			"advertsAmount": 20
+		}
+	];
+	response.send(tags);
+});
+
 /** subcategories **/
 app.get('/categories/1/subcategories', (request, response) => {
 	let subcategories = {

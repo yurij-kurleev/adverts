@@ -39,15 +39,11 @@
                 Теги
             </div>
             <div class="tags-block">
-                <a href="" class="tag-link">Test</a>
-                <a href="" class="tag-link">Срочно</a>
-                <a href="" class="tag-link">Дёшево</a>
-                <a href="" class="tag-link">Быстро</a>
-                <a href="" class="tag-link">Качественно</a>
-                <a href="" class="tag-link">Надёжно</a>
-                <a href="" class="tag-link">Класс</a>
-                <a href="" class="tag-link">Авто</a>
-                <a href="" class="tag-link">Test</a>
+                <a href="#/adverts/tags/{{tag.id}}/1" class="tag-link" id="{{tag.id}}"
+                   ng-repeat="tag in tags">
+                    {{tag.name}}
+                </a>
+                <div post-render></div>
             </div>
         </div>
     </div>

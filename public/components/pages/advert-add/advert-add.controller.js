@@ -1,6 +1,6 @@
 'use strict';
 
-let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
+let advertAddController = ($scope, $cookies, auth, $window, advert, ui, aside) => {
     $scope.user = $cookies.getObject('user');
     $scope.blockTitle = "Категории";
     if(!$scope.user && ~$window.location.href.indexOf("#/adverts/add")){
@@ -18,6 +18,19 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui) => {
     .error(() => {
         console.log("Error: can't get categories");
     });
+
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+    })
+    .error((response) => {
+        console.log(response);
+    });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
 
     advert.getCurrency().success((response) => {
         $scope.currencies = response._embedded.currencies;
@@ -83,7 +96,8 @@ advertAddController.$inject = [
     'auth',
     '$window',
     'advert',
-    'ui'
+    'ui',
+    'aside'
 ];
 
 angular.module('app').controller('advertAddController', advertAddController);

@@ -18,7 +18,7 @@ let aside = ($http) => {
     let getTags = () => {
         return $http({
             method: 'GET',
-            url: ''
+            url: '/adverts/randomTags?amount=10'
         });
     };
 
