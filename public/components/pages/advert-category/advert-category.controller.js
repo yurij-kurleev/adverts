@@ -58,6 +58,26 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
             });
     };
 
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+        setTimeout(() => {
+            for(let i in $scope.tags){
+                ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+            }
+        }, 0);
+
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        console.log('asd');
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
+
     $scope.unauthorize = () => {
         auth.unauthorize();
         delete $scope.user;

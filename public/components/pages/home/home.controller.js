@@ -92,6 +92,19 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
         $scope.toggleModal();
     };
 
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
+
     let getPageFromUrl = (url) => {
         let entry = url.match(/page=\d+/)[0];
         if(entry){

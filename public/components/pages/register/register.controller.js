@@ -80,6 +80,19 @@ let registerController = ($scope, register, $window, ui, $cookies, auth, aside) 
         });
         ui.toggleAuthDialog();
     };
+
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
 };
 registerController.$inject = [
 	'$scope',

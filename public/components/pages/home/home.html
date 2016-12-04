@@ -8,6 +8,7 @@
             </div>
             <div ng-include="'/components/partials/error-block.html'" onload="showError()" ng-show="error"></div>
             <div class="post" ng-repeat="advert in adverts">
+
                 <div class="post-description">
                     <h3 class="post-title">{{advert.title}}</h3>
                     <div class="image-block">

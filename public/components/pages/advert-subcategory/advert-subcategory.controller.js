@@ -86,6 +86,24 @@ let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory
         });
     };
 
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+        setTimeout(() => {
+            for(let i in $scope.tags){
+                ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+            }
+        }, 0);
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
+
     let getPageFromUrl = (url) => {
         let entry = url.match(/page=\d+/)[0];
         if(entry){

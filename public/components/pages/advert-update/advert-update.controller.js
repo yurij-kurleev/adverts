@@ -35,6 +35,19 @@ let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth,
         $cookies.put('category', $event.target.text);
     };
 
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
+
     $scope.unauthorize = () => {
         auth.unauthorize();
         delete $scope.user;

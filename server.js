@@ -162,7 +162,7 @@ app.get('/adverts/randomTags', (request, response) => {
 				}
 			],
 			"id": 7,
-			"advertsAmount": 10
+			"advertsAmount": 1
 		},
 		{
 			"name": "random_tag",

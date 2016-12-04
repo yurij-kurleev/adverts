@@ -66,6 +66,19 @@ let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit, a
         delete $scope.user;
         $window.location.href = "#/adverts/1";
     };
+
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
 };
 
 profileEditController.$inject = [

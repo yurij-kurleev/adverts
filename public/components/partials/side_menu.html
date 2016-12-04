@@ -25,6 +25,7 @@
                    ng-click="getAdvertCategory($event)">
                     {{category.name}}
                 </a>
+                <div post-render></div>
             </div>
             <div class="menu-item" ng-repeat="subcategory in subcategories" ng-show="subcategories">
                 <a href="#/adverts/{{categoryId}}/subcategories/{{subcategory.id}}/1" class="menu-link">
@@ -43,7 +44,6 @@
                    ng-repeat="tag in tags">
                     {{tag.name}}
                 </a>
-                <div post-render></div>
             </div>
         </div>
     </div>

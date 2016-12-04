@@ -1,6 +1,6 @@
 'use strict';
 
-let profileController = ($scope, $cookies, auth, $window, profile, aside) => {
+let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) => {
     $scope.user = $cookies.getObject('user');
     $scope.blockTitle = "Категории";
     if(!$scope.user && ~$window.location.href.indexOf("#/profile")){
@@ -46,6 +46,19 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside) => {
         });
         $scope.toggleModal();
     };
+
+    aside.getTags().success((response) => {
+        $scope.tags = response;
+    })
+        .error((response) => {
+            console.log(response);
+        });
+
+    $scope.setTagSize = () => {
+        for(let i in $scope.tags){
+            ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
+        }
+    };
 };
 
 profileController.$inject = [
@@ -54,7 +67,8 @@ profileController.$inject = [
     'auth',
     '$window',
     'profile',
-    'aside'
+    'aside',
+    'ui'
 ];
 
 angular.module('app').controller('profileController', profileController);
