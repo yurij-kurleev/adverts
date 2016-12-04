@@ -86,7 +86,7 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + search;
+        $window.location.href = '#/adverts/search/' + $scope.search;
     };
 };
 

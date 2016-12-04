@@ -98,7 +98,7 @@ let registerController = ($scope, register, $window, ui, $cookies, auth, aside) 
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + search;
+        $window.location.href = '#/adverts/search/' + $scope.search;
     };
 };
 registerController.$inject = [
