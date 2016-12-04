@@ -11,7 +11,7 @@ let aside = ($http) => {
     let getSubcategories = (categoryId) => {
         return $http({
             method: 'GET',
-            url: '/categorie/' + categoryId + '/subcategories'
+            url: '/categories/' + categoryId + '/subcategories'
         });
     };
 

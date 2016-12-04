@@ -2,12 +2,13 @@
 
 let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory, $routeParams, $window, aside) => {
     $scope.currentPage = $routeParams.pageId;
+    $scope.categoryId = $routeParams.categoryId;
     $scope.subcategoryId = $routeParams.subcategoryId;
     $scope.blockTitle = $cookies.get('category');
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
 
-    advertSubcategory.getAdvertsBySubcategory($scope.currentPage, $scope.subcategoryId).success((response) => {
+    aside.getAdvertsBySubcategory($scope.currentPage, $scope.subcategoryId).success((response) => {
         $scope.adverts = response._embedded.adverts;
         for(let i = 0; i < $scope.adverts.length; i++){
             $scope.adverts[i].addTime = $scope.adverts[i].addTime.replace(/T/, " ");
@@ -65,12 +66,12 @@ let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory
 
     $scope.nextPage = () => {
         $scope.currentPage++;
-        $window.location.href = "#/adverts/subcategories/" + $scope.categoryId + "/" + $scope.currentPage;
+        $window.location.href = "#/adverts/" + $scope.categoryId + "/subcategories/" + $scope.subcategoryId + "/" + $scope.currentPage;
     };
 
     $scope.prevPage = () => {
         $scope.currentPage--;
-        $window.location.href = "#/adverts/subcategories/" + $scope.categoryId + "/" + $scope.currentPage;
+        $window.location.href = "#/adverts/" + $scope.categoryId + "/subcategories/" + $scope.subcategoryId + "/" + $scope.currentPage;
     };
 
     let getPageFromUrl = (url) => {
