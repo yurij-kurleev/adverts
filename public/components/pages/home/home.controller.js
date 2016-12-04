@@ -110,7 +110,7 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.formData.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search + "/1";
     };
 
     let getPageFromUrl = (url) => {

@@ -108,7 +108,7 @@ let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.formData.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search + "/1";
     };
 
     let getPageFromUrl = (url) => {

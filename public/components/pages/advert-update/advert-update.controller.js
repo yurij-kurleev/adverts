@@ -112,7 +112,7 @@ let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth,
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.formData.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search + "/1";
     };
 };
 

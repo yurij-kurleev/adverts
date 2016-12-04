@@ -42,11 +42,10 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) =>
 
     $scope.deleteAdvert = () => {
         profile.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/profile";
+            $window.location.reload();
         })
             .error((response) => {
                 console.log(response);
-                $window.location.href = "#/profile";
             });
         $scope.toggleModal();
     };
@@ -68,7 +67,7 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) =>
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.formData.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search + "/1";
     };
 };
 

@@ -46,7 +46,7 @@ let aside = ($http) => {
     let getAdvertsByTitle = (page, title, limit = 2) => {
         return $http({
             method: 'GET',
-            url: '/adverts?page=' + page + '&size=' + limit + '&title=' + tagName
+            url: '/adverts?page=' + page + '&size=' + limit + '&title=' + title
         });
     };
 
