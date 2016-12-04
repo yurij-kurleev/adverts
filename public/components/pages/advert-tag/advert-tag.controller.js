@@ -79,9 +79,9 @@ let advertTagController = ($scope, $cookies, auth, ui, advertTag, $routeParams, 
     };
 
     $scope.deleteAdvert = () => {
-        $scope.toggleModal();
         advertTag.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $window.location.href = "#/adverts/tags/" + $scope.tagName + "/" + $scope.currentPage;
+            $scope.toggleModal();
         });
     };
 

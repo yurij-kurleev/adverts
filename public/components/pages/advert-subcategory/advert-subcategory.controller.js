@@ -80,9 +80,9 @@ let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory
     };
 
     $scope.deleteAdvert = () => {
-        $scope.toggleModal();
         advertSubcategory.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $window.location.href = "#/adverts/" + $scope.categoryId + "/subcategories/" + $scope.subcategoryId + "/" + $scope.currentPage;
+            $scope.toggleModal();
         })
             .error((response) => {
                 console.log(response);

@@ -79,9 +79,9 @@ let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routePa
     };
 
     $scope.deleteAdvert = () => {
-        $scope.toggleModal();
         advertSearch.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+            $scope.toggleModal();
         }).error((response) => {
             console.log(response);
         });

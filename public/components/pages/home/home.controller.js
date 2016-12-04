@@ -89,8 +89,8 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
     $scope.deleteAdvert = () => {
         home.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $window.location.href = "#/adverts/categories/" + $scope.currentPage;
+            $scope.toggleModal();
         });
-        $scope.toggleModal();
     };
 
     aside.getTags().success((response) => {

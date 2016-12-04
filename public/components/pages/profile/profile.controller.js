@@ -43,12 +43,12 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) =>
 
     $scope.deleteAdvert = () => {
         profile.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.reload();
+            $window.location.href = "#/profile";
+            $scope.toggleModal();
         })
             .error((response) => {
                 console.log(response);
             });
-        $scope.toggleModal();
     };
 
     aside.getTags().success((response) => {
