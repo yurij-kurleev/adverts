@@ -19,7 +19,8 @@
                     </div>
                 </div>
                 <div class="post-rating">
-                    <div class="delete-post" ng-show="user.id == advert.owner.id"
+                    <div class="delete-post"
+                         ng-show="user.id == advert.owner.id || user.admin"
                          ng-click="toggleModal(advert.id)">
                         X
                     </div>

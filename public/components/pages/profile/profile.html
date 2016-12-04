@@ -19,10 +19,6 @@
             <hr class="hr">
             <a href="#/profile/edit/{{user.id}}" class="edit-btn">Редактировать профиль</a>
         </div>
-        <div class="delete-post"
-             ng-click="toggleModal(advert.id)">
-            X
-        </div>
         <div class="items-block-header" ng-show="adverts">
             <h2 class="items-block-h2">Мои объявления</h2>
         </div>
@@ -37,7 +33,8 @@
                 </div>
             </div>
             <div class="post-rating">
-                <div class="delete-post" ng-show="user.id == advert.owner.id"
+                <div class="delete-post"
+                     ng-show="user.id == advert.owner.id || user.admin"
                      ng-click="toggleModal(advert.id)">
                     X
                 </div>

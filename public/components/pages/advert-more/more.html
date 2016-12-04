@@ -29,7 +29,8 @@
                         Теги: <span ng-repeat="tag in advert.tags"><a href="#/adverts/tags/{{tag.id}}/1">#{{tag.name}}</a> </span>
                     </div>
                     <a href="#/adverts/edit/{{advert.id}}"
-                       class="edit-btn" id="user-edit" ng-show="advert.owner.id == user.id">
+                       class="edit-btn" id="user-edit"
+                       ng-show="advert.owner.id == user.id || user.admin">
                         Редактировать
                     </a>
                 </div>

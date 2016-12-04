@@ -6,6 +6,7 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) =>
     if(!$scope.user && ~$window.location.href.indexOf("#/profile")){
         $window.location.href = '#/adverts/1';
     }
+    $scope.formData = {};
 
     profile.getUserPosts($scope.user._links.adverts.href).success((response) => {
         $scope.adverts = response._embedded.adverts;
