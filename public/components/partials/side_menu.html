@@ -20,10 +20,15 @@
             <div class="menu-header">
                 {{blockTitle}}
             </div>
-            <div class="menu-item" ng-repeat="category in categories">
+            <div class="menu-item" ng-repeat="category in categories" ng-show="categories">
                 <a href="#/adverts/categories/{{category.id}}/1" class="menu-link"
                    ng-click="getAdvertCategory($event)">
                     {{category.name}}
+                </a>
+            </div>
+            <div class="menu-item" ng-repeat="subcategory in subcategories" ng-show="subcategories">
+                <a href="#/adverts/categoryId/subcategories/{{subcategory.id}}/1" class="menu-link">
+                    {{subcategory.name}}
                 </a>
             </div>
         </div>
@@ -33,7 +38,6 @@
             <div class="menu-header">
                 Теги
             </div>
-
             <div class="tags-block">
                 <a href="" class="tag-link">Test</a>
                 <a href="" class="tag-link">Срочно</a>
@@ -45,7 +49,6 @@
                 <a href="" class="tag-link">Авто</a>
                 <a href="" class="tag-link">Test</a>
             </div>
-
         </div>
     </div>
 </aside>

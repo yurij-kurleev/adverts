@@ -37,9 +37,9 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/advert-category/advert-category.html',
 			controller: 'advertCategoryController'
 		})
-		.when('/adverts/subcategories/:subcategoryId/:pageId', {
-			templateUrl: '',
-			controller: ''
+		.when('/adverts/:categoryId/subcategories/:subcategoryId/:pageId', {
+			templateUrl: 'components/pages/advert-subcategory/advert-subcategory.html',
+			controller: 'advertSubcategoryController'
 		})
 		.otherwise({
 			redirectTo: '/adverts/1'

@@ -1,13 +1,13 @@
 'use strict';
 
-let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $routeParams, $window, aside) => {
+let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory, $routeParams, $window, aside) => {
     $scope.currentPage = $routeParams.pageId;
-    $scope.categoryId = $routeParams.categoryId;
+    $scope.subcategoryId = $routeParams.subcategoryId;
     $scope.blockTitle = $cookies.get('category');
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
 
-    advertCategory.getAdvertsByCategory($scope.currentPage, $scope.categoryId).success((response) => {
+    advertSubcategory.getAdvertsBySubcategory($scope.currentPage, $scope.subcategoryId).success((response) => {
         $scope.adverts = response._embedded.adverts;
         for(let i = 0; i < $scope.adverts.length; i++){
             $scope.adverts[i].addTime = $scope.adverts[i].addTime.replace(/T/, " ");
@@ -18,10 +18,10 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
         $scope.prev = 1 < $scope.currentPage;
         $scope.cur = 1 != lastPage;
     })
-    .error((response) => {
-        $scope.error = "No adverts found";
-        console.log(response);
-    });
+        .error((response) => {
+            $scope.error = "No adverts found";
+            console.log(response);
+        });
 
     aside.getSubcategories($scope.categoryId).success((response) => {
         $scope.subcategories = response._embedded.subcategories;
@@ -65,12 +65,12 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
 
     $scope.nextPage = () => {
         $scope.currentPage++;
-        $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
+        $window.location.href = "#/adverts/subcategories/" + $scope.categoryId + "/" + $scope.currentPage;
     };
 
     $scope.prevPage = () => {
         $scope.currentPage--;
-        $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
+        $window.location.href = "#/adverts/subcategories/" + $scope.categoryId + "/" + $scope.currentPage;
     };
 
     let getPageFromUrl = (url) => {
@@ -81,15 +81,15 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
     };
 };
 
-advertCategoryController.$inject = [
+advertSubcategoryController.$inject = [
     '$scope',
     '$cookies',
     'auth',
     'ui',
-    'advertCategory',
+    'advertSubcategory',
     '$routeParams',
     '$window',
     'aside'
 ];
 
-angular.module('app').controller('advertCategoryController', advertCategoryController);
+angular.module('app').controller('advertSubcategoryController', advertSubcategoryController);

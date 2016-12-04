@@ -11,7 +11,7 @@ let aside = ($http) => {
     let getSubcategories = (categoryId) => {
         return $http({
             method: 'GET',
-            url: '/categories/' + categoryId + '/subcategories'
+            url: '/categorie/' + categoryId + '/subcategories'
         });
     };
 
@@ -29,10 +29,10 @@ let aside = ($http) => {
         });
     };
 
-    let getAdvertsBySubcategory = (url) => {
+    let getAdvertsBySubcategory = (page, subcategoryId, limit = 2) => {
         return $http({
             method: 'GET',
-            url: url
+            url: '/adverts?page=' + page + '&size=' + limit + '&subcategoryId=' + subcategoryId
         });
     };
 
