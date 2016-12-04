@@ -34,7 +34,7 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
     aside.getTags().success((response) => {
         $scope.tags = response;
         for(let i in $scope.tags){
-            $scope.tags[i].name = encodeURIComponent($scope.tags[i].name);
+            $scope.tags[i].url = encodeURIComponent($scope.tags[i].name);
         }
     })
         .error((response) => {
