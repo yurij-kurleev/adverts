@@ -5,6 +5,7 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
     $scope.user = $cookies.getObject('user');
     $scope.blockTitle = "Категории";
     $scope.formData = {};
+    $scope.search = "";
 
     $scope.getAdvertCategory = ($event) => {
         $cookies.put('category', $event.target.text);
@@ -109,7 +110,7 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search;
     };
 
     let getPageFromUrl = (url) => {

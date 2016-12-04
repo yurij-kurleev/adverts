@@ -30,9 +30,9 @@
 		<h1 class="search-block-h1">Все свежие объявления на ADvertS.com!</h1>
 		<div class="container">
 			<div class="search-field-block">
-				<form class="search-form" ng-submit="searchAdvert()">
+				<form ng-submit="searchAdvert()" class="search-form">
 					<input type="text" id="searchRequest" placeholder="Название товара"
-						   class="search-field" ng-model="search">
+						   class="search-field" ng-model="formData.search" name="search">
 					<button class="search-submit" type="submit">Найти</button>
 				</form>
 			</div>

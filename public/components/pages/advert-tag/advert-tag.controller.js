@@ -107,7 +107,7 @@ let advertTagController = ($scope, $cookies, auth, ui, advertTag, $routeParams, 
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search;
     };
 
     let getPageFromUrl = (url) => {

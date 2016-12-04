@@ -84,7 +84,7 @@ let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit, a
     };
 
     $scope.searchAdvert = () => {
-        $window.location.href = '#/adverts/search/' + $scope.search;
+        $window.location.href = '#/adverts/search/' + $scope.formData.search;
     };
 };
 
