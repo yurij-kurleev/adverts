@@ -96,6 +96,10 @@ let registerController = ($scope, register, $window, ui, $cookies, auth, aside) 
             ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
         }
     };
+
+    $scope.searchAdvert = () => {
+        $window.location.href = '#/adverts/search/' + search;
+    };
 };
 registerController.$inject = [
 	'$scope',

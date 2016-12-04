@@ -82,6 +82,10 @@ let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit, a
             ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
         }
     };
+
+    $scope.searchAdvert = () => {
+        $window.location.href = '#/adverts/search/' + search;
+    };
 };
 
 profileEditController.$inject = [

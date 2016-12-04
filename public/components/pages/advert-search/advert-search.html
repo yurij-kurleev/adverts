@@ -1,0 +1,51 @@
+<div ng-include="'components/partials/header.html'"></div>
+<div class="main-content-block container">
+    <div class="aside-block" ng-include="'components/partials/side_menu.html'"></div>
+    <div class="items-block">
+        <div class="items-block">
+            <div class="items-block-header">
+                <h2 class="items-block-h2">Поиск по запросу: {{title}}</h2>
+            </div>
+            <div ng-include="'/components/partials/error-block.html'" onload="showError()" ng-show="error"></div>
+            <div class="post" ng-repeat="advert in adverts">
+
+                <div class="post-description">
+                    <h3 class="post-title">{{advert.title}}</h3>
+                    <div class="image-block">
+                        <img ng-src={{advert._links.image.href}} alt="Изображение товара" class="post-main-image">
+                    </div>
+                    <div class="description">
+                        {{advert.description}}
+                    </div>
+                </div>
+                <div class="post-rating">
+                    <div class="delete-post" ng-show="user.id == advert.owner.id"
+                         ng-click="toggleModal(advert.id)">
+                        X
+                    </div>
+                    <div class="price">{{advert.price + " " + advert.currency.abbreviation}}</div>
+                </div>
+                <div class="hr"><hr/></div>
+                <div class="post-footer">
+                    <div class="post-time">
+                        <img src="../../../img/dateIco.png" alt="dateIco">
+                        {{advert.addTime}}
+                    </div>
+                    <div class="post-author">
+                        <img src="../../../img/authorIco.png" alt="authorIco">
+                        {{advert.owner.name + " " + advert.owner.surname}}
+                    </div>
+                    <div class="post-readmore-btn">
+                        <a href="#/adverts/more/{{advert.id}}" class="post-readmore">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-navigation-block">
+            <a href="" id="prev" class="page-navigation-link" ng-show="prev" ng-click="prevPage()"> < </a>
+            <div id="cur" class="page-navigation-link" ng-show="cur"> {{currentPage}} </div>
+            <a href="" id="next" class="page-navigation-link" ng-show="next" ng-click="nextPage()"> > </a>
+        </div>
+    </div>
+</div>
+<div class="footer" ng-include="'components/partials/footer.html'"></div>

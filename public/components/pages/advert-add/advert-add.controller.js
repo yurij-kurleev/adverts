@@ -91,6 +91,10 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui, aside) =
             ui.scrollTo('error');
         });
     };
+
+    $scope.searchAdvert = () => {
+        $window.location.href = '#/adverts/search/' + search;
+    };
 };
 
 advertAddController.$inject = [

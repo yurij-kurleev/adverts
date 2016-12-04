@@ -110,6 +110,10 @@ let advertUpdateController = ($scope, $routeParams, $window, advertUpdate, auth,
                 ui.scrollTo('error');
             });
     };
+
+    $scope.searchAdvert = () => {
+        $window.location.href = '#/adverts/search/' + search;
+    };
 };
 
 advertUpdateController.$inject = [

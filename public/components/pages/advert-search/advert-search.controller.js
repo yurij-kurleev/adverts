@@ -1,13 +1,13 @@
 'use strict';
 
-let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $routeParams, $window, aside) => {
+let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routeParams, $window, aside) => {
     $scope.currentPage = $routeParams.pageId;
-    $scope.categoryId = $routeParams.categoryId;
-    $scope.blockTitle = $cookies.get('category');
+    $scope.title = $routeParams.title;
+    $scope.blockTitle = "Категории";
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
 
-    advertCategory.getAdvertsByCategory($scope.currentPage, $scope.categoryId).success((response) => {
+    aside.getAdvertsByTitle($scope.currentPage, $scope.title).success((response) => {
         $scope.adverts = response._embedded.adverts;
         for(let i = 0; i < $scope.adverts.length; i++){
             $scope.adverts[i].addTime = $scope.adverts[i].addTime.replace(/T/, " ");
@@ -18,17 +18,17 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
         $scope.prev = 1 < $scope.currentPage;
         $scope.cur = 1 != lastPage;
     })
-    .error((response) => {
-        $scope.error = "No adverts found";
-        console.log(response);
-    });
+        .error((response) => {
+            $scope.error = "No adverts found";
+            console.log(response);
+        });
 
-    aside.getSubcategories($scope.categoryId).success((response) => {
-        $scope.subcategories = response._embedded.subcategories;
+    aside.getCategories().success((response) => {
+        $scope.categories = response._embedded.categories;
     })
-    .error(() => {
-        console.log("Error: can't get subcategories");
-    });
+        .error(() => {
+            console.log("Error: can't get subcategories");
+        });
 
     $scope.showError = () => {
         ui.toggleError('error');
@@ -58,6 +58,33 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
             });
     };
 
+    $scope.unauthorize = () => {
+        auth.unauthorize();
+        delete $scope.user;
+    };
+
+    $scope.nextPage = () => {
+        $scope.currentPage++;
+        $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+    };
+
+    $scope.prevPage = () => {
+        $scope.currentPage--;
+        $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+    };
+
+    $scope.toggleModal = (advertId = null) => {
+        ui.toggleDeleteModal();
+        $scope.advertId = advertId;
+    };
+
+    $scope.deleteAdvert = () => {
+        $scope.toggleModal();
+        advertSearch.deleteAdvert($scope.user, $scope.advertId).success((response) => {
+            $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+        });
+    };
+
     aside.getTags().success((response) => {
         $scope.tags = response;
         for(let i in $scope.tags){
@@ -67,45 +94,16 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
             for(let i in $scope.tags){
                 ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
             }
-        }, 0);
-
+        }, 500);
     })
         .error((response) => {
             console.log(response);
         });
 
     $scope.setTagSize = () => {
-        console.log('asd');
         for(let i in $scope.tags){
             ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);
         }
-    };
-
-    $scope.unauthorize = () => {
-        auth.unauthorize();
-        delete $scope.user;
-    };
-
-    $scope.nextPage = () => {
-        $scope.currentPage++;
-        $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
-    };
-
-    $scope.prevPage = () => {
-        $scope.currentPage--;
-        $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
-    };
-
-    $scope.toggleModal = (advertId = null) => {
-        ui.toggleDeleteModal();
-        $scope.advertId = advertId;
-    };
-
-    $scope.deleteAdvert = () => {
-        advertCategory.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
-        });
-        $scope.toggleModal();
     };
 
     $scope.searchAdvert = () => {
@@ -120,15 +118,15 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
     };
 };
 
-advertCategoryController.$inject = [
+advertSearchController.$inject = [
     '$scope',
     '$cookies',
     'auth',
     'ui',
-    'advertCategory',
+    'advertSearch',
     '$routeParams',
     '$window',
     'aside'
 ];
 
-angular.module('app').controller('advertCategoryController', advertCategoryController);
+angular.module('app').controller('advertSearchController', advertSearchController);

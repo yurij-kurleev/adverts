@@ -84,6 +84,10 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
                 console.log(response);
             });
     };
+
+    $scope.searchAdvert = () => {
+        $window.location.href = '#/adverts/search/' + search;
+    };
 };
 
 advertMoreController.$inject = [

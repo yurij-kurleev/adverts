@@ -108,6 +108,10 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
         }
     };
 
+    $scope.searchAdvert = () => {
+        $window.location.href = '#/adverts/search/' + search;
+    };
+
     let getPageFromUrl = (url) => {
         let entry = url.match(/page=\d+/)[0];
         if(entry){
