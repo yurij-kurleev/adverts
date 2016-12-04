@@ -8,8 +8,19 @@ let profile = ($http) => {
         });
     };
 
+    let deleteAdvert = (data, advertId) => {
+        return $http({
+            method: 'DELETE',
+            url: '/adverts/' + advertId,
+            headers: {
+                'Authorization': 'Basic ' + data.login + ':' + data.password
+            }
+        });
+    };
+
     return {
-        getUserPosts
+        getUserPosts,
+        deleteAdvert
     };
 };
 

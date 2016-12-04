@@ -80,6 +80,18 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
         $window.location.href = "#/adverts/" + $scope.currentPage;
     };
 
+    $scope.toggleModal = (advertId = null) => {
+        ui.toggleDeleteModal();
+        $scope.advertId = advertId;
+    };
+
+    $scope.deleteAdvert = () => {
+        home.deleteAdvert($scope.user, $scope.advertId).success((response) => {
+            $window.location.href = "#/adverts/categories/" + $scope.currentPage;
+        });
+        $scope.toggleModal();
+    };
+
     let getPageFromUrl = (url) => {
         let entry = url.match(/page=\d+/)[0];
         if(entry){

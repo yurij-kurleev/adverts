@@ -34,6 +34,18 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside) => {
     $scope.getAdvertCategory = ($event) => {
         $cookies.put('category', $event.target.text);
     };
+
+    $scope.toggleModal = (advertId = null) => {
+        ui.toggleDeleteModal();
+        $scope.advertId = advertId;
+    };
+
+    $scope.deleteAdvert = () => {
+        profile.deleteAdvert($scope.user, $scope.advertId).success((response) => {
+            $window.location.href = "#/profile";
+        });
+        $scope.toggleModal();
+    };
 };
 
 profileController.$inject = [

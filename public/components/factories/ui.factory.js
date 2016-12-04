@@ -55,12 +55,27 @@ angular.module('app').factory('ui', () => {
         tag.style.fontSize = fontSize;
 	};
 
+	let toggleDeleteModal = () => {
+        let modal = document.getElementById('modal-delete');
+        let layer = document.getElementById('delete-layout');
+        if(!modal.style.display || modal.style.display == "none"){
+            console.log(1);
+            modal.style.display = "flex";
+            layer.style.display = "block";
+        } else{
+            console.log(2);
+            modal.style.display = "none";
+            layer.style.display = "none";
+        }
+    };
+
 	return {
 		toggleClass,
 		toggleMenu,
 		scrollTo,
         toggleError,
 		toggleAuthDialog,
-        setTagSize
+        setTagSize,
+        toggleDeleteModal
 	}
 });

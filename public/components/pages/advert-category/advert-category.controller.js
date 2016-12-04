@@ -73,6 +73,18 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
         $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
     };
 
+    $scope.toggleModal = (advertId = null) => {
+        ui.toggleDeleteModal();
+        $scope.advertId = advertId;
+    };
+
+    $scope.deleteAdvert = () => {
+        advertCategory.deleteAdvert($scope.user, $scope.advertId).success((response) => {
+            $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
+        });
+        $scope.toggleModal();
+    };
+
     let getPageFromUrl = (url) => {
         let entry = url.match(/page=\d+/)[0];
         if(entry){
