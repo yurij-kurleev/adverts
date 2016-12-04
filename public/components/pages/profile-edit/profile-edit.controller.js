@@ -69,6 +69,9 @@ let profileEditController = ($scope, $window, $cookies, auth, ui, profileEdit, a
 
     aside.getTags().success((response) => {
         $scope.tags = response;
+        for(let i in $scope.tags){
+            $scope.tags[i].name = encodeURIComponent($scope.tags[i].name);
+        }
     })
         .error((response) => {
             console.log(response);

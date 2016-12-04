@@ -60,6 +60,9 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
 
     aside.getTags().success((response) => {
         $scope.tags = response;
+        for(let i in $scope.tags){
+            $scope.tags[i].name = encodeURIComponent($scope.tags[i].name);
+        }
         setTimeout(() => {
             for(let i in $scope.tags){
                 ui.setTagSize($scope.tags[i].id, $scope.tags[i].advertsAmount);

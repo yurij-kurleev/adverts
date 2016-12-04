@@ -53,6 +53,9 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) =>
 
     aside.getTags().success((response) => {
         $scope.tags = response;
+        for(let i in $scope.tags){
+            $scope.tags[i].name = encodeURIComponent($scope.tags[i].name);
+        }
     })
         .error((response) => {
             console.log(response);

@@ -83,6 +83,9 @@ let registerController = ($scope, register, $window, ui, $cookies, auth, aside) 
 
     aside.getTags().success((response) => {
         $scope.tags = response;
+        for(let i in $scope.tags){
+            $scope.tags[i].name = encodeURIComponent($scope.tags[i].name);
+        }
     })
         .error((response) => {
             console.log(response);
