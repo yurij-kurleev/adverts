@@ -1,6 +1,6 @@
 'use strict';
 
-let advertTagController = ($scope, $cookies, auth, ui, advertTag, $routeParams, $window, aside) => {
+let advertTagController = ($scope, $cookies, auth, ui, advertTag, $routeParams, $window, aside, $route) => {
     $scope.currentPage = $routeParams.pageId;
     $scope.tagName = $routeParams.tagName;
     $scope.blockTitle = "Категории";
@@ -80,7 +80,7 @@ let advertTagController = ($scope, $cookies, auth, ui, advertTag, $routeParams, 
 
     $scope.deleteAdvert = () => {
         advertTag.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/adverts/tags/" + $scope.tagName + "/" + $scope.currentPage;
+            $route.reload();
             $scope.toggleModal();
         });
     };
@@ -126,7 +126,8 @@ advertTagController.$inject = [
     'advertTag',
     '$routeParams',
     '$window',
-    'aside'
+    'aside',
+    '$route'
 ];
 
 angular.module('app').controller('advertTagController', advertTagController);

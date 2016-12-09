@@ -1,6 +1,6 @@
 'use strict';
 
-let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, aside) => {
+let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, aside, $route) => {
     $scope.currentPage = $routeParams.pageId;
     $scope.user = $cookies.getObject('user');
     $scope.blockTitle = "Категории";
@@ -88,7 +88,7 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
 
     $scope.deleteAdvert = () => {
         home.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/adverts/categories/" + $scope.currentPage;
+            $route.reload();
             $scope.toggleModal();
         });
     };
@@ -128,7 +128,8 @@ homeController.$inject = [
     'home',
     '$routeParams',
     '$window',
-    'aside'
+    'aside',
+    '$route'
 ];
 
 angular.module('app').controller('homeController', homeController);

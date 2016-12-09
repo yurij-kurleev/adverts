@@ -1,6 +1,6 @@
 'use strict';
 
-let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) => {
+let profileController = ($scope, $cookies, auth, $window, profile, aside, ui, $route) => {
     $scope.user = $cookies.getObject('user');
     $scope.blockTitle = "Категории";
     if(!$scope.user && ~$window.location.href.indexOf("#/profile")){
@@ -43,7 +43,7 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui) =>
 
     $scope.deleteAdvert = () => {
         profile.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/profile";
+            $route.reload();
             $scope.toggleModal();
         })
             .error((response) => {
@@ -79,7 +79,8 @@ profileController.$inject = [
     '$window',
     'profile',
     'aside',
-    'ui'
+    'ui',
+    '$route'
 ];
 
 angular.module('app').controller('profileController', profileController);

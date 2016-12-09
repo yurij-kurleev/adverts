@@ -68,14 +68,14 @@ app.get('/geolocation/countries/c1/regions', (request, response) => {
 /** register **/
 	app.post('/users', (request, response) => {
 		let user = {
-			name: "Bogdan",
-			surname: "Fedoronchuk",
+			name: "Юрий",
+			surname: "Курлеев",
 			phone: "752 25 50",
 			email: "haistler97@ukr.net",
 			registrationDate: "2016-11-19T12:31:22",
 			regionName: "Одесская область",
 			countryName: "Украина",
-			admin: false,
+			admin: true,
 			_links:{
 				self:{
 					href: "http://localhost:8080/users/1"
@@ -99,7 +99,7 @@ app.get('/users/login', (request, response) => {
 		registrationDate: "2016-11-19T12:31:22",
 		regionName: "Одесская область",
 		countryName: "Украина",
-		admin: false,
+		admin: true,
 		_links:{
 			self:{
 				href: "http://localhost:8080/users/1"

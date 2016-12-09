@@ -88,6 +88,74 @@ let advertMoreController = ($scope, $cookies, auth, ui, $routeParams, $window, a
     $scope.searchAdvert = () => {
         $window.location.href = '#/adverts/search/' + $scope.formData.search + "/1";
     };
+
+    $scope.convert = () => {
+        var docDefinition = {
+            content: [
+                {
+                    text: $scope.advert.title,
+                    fontSize: 32,
+                    bold: true,
+                    background: '#ff1'
+                },
+                {
+                    text: "Категория: " + $scope.advert.category.name + ", " + $scope.advert.subcategory.name,
+                    fontSize: 18
+                },
+                {
+                    canvas: [
+                        {
+                            type: 'line',
+                            x1: 0, y1: 15,
+                            x2: 500, y2: 15,
+                            lineWidth: 2
+                        }
+                    ]
+                },
+                {
+                    text: "Контактная информация",
+                    margin: [150, 15],
+                    fontSize: 18,
+                    italic: true
+                },
+                {
+                    ul: [
+                        'Имя: ' + $scope.advert.owner.name + " " + $scope.advert.owner.surname,
+                        'Моб.телефон: ' + $scope.advert.owner.phone,
+                        'Где: ' + $scope.advert.region.name + ", " + $scope.advert.country.name,
+                        'Email: ' + $scope.advert.owner.email
+                    ]
+                },
+                {
+                    canvas: [
+                        {
+                            type: 'line',
+                            x1: 0, y1: 15,
+                            x2: 500, y2: 15,
+                            lineWidth: 2
+                        }
+                    ]
+                },
+                {
+                    text: "Описание",
+                    margin: [200, 10],
+                    fontSize: 18,
+                    bold: true
+                },
+                {
+                    text: $scope.advert.description,
+                    fontSize: 14
+                },
+                {
+                    text: "Стоимость: " + $scope.advert.price + " " + $scope.advert.currency.abbreviation,
+                    fontSize: 16,
+                    color: '#3E6D00',
+                    margin: [320, 30, 0, 0]
+                }
+            ]
+        };
+        pdfMake.createPdf(docDefinition).open();
+    }
 };
 
 advertMoreController.$inject = [

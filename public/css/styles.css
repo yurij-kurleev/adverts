@@ -646,7 +646,16 @@ body{
     transition: all 0.4s;
 }
 
-.edit-btn:hover{
+.convert-btn{
+    display: flex;
+    flex: 1 100%;
+    color: #fff;
+    background-color: #77CD42;
+    transition: all 0.4s;
+    font-size: 1.5rem;
+}
+
+.edit-btn:hover, .convert-btn:hover{
     background-color: #257B0A;
 }
 

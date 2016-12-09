@@ -1,6 +1,6 @@
 'use strict';
 
-let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routeParams, $window, aside) => {
+let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routeParams, $window, aside, $route) => {
     $scope.currentPage = $routeParams.pageId;
     $scope.title = $routeParams.title;
     $scope.blockTitle = "Категории";
@@ -80,7 +80,7 @@ let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routePa
 
     $scope.deleteAdvert = () => {
         advertSearch.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+            $route.reload();
             $scope.toggleModal();
         }).error((response) => {
             console.log(response);
@@ -128,7 +128,8 @@ advertSearchController.$inject = [
     'advertSearch',
     '$routeParams',
     '$window',
-    'aside'
+    'aside',
+    '$route'
 ];
 
 angular.module('app').controller('advertSearchController', advertSearchController);

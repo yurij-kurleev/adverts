@@ -1,6 +1,6 @@
 'use strict';
 
-let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory, $routeParams, $window, aside) => {
+let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory, $routeParams, $window, aside, $route) => {
     $scope.currentPage = $routeParams.pageId;
     $scope.categoryId = $routeParams.categoryId;
     $scope.subcategoryId = $routeParams.subcategoryId;
@@ -81,7 +81,7 @@ let advertSubcategoryController = ($scope, $cookies, auth, ui, advertSubcategory
 
     $scope.deleteAdvert = () => {
         advertSubcategory.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/adverts/" + $scope.categoryId + "/subcategories/" + $scope.subcategoryId + "/" + $scope.currentPage;
+            $route.reload();
             $scope.toggleModal();
         })
             .error((response) => {
@@ -130,7 +130,8 @@ advertSubcategoryController.$inject = [
     'advertSubcategory',
     '$routeParams',
     '$window',
-    'aside'
+    'aside',
+    '$route'
 ];
 
 angular.module('app').controller('advertSubcategoryController', advertSubcategoryController);

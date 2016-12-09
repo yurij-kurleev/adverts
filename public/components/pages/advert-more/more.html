@@ -1,7 +1,8 @@
 <div ng-include="'components/partials/header.html'" onload="scrollTo()"></div>
 <div class="main-content-block container">
     <div class="aside-block" ng-include="'components/partials/side_menu.html'"></div>
-    <div class="items-block">
+
+    <div class="items-block" id="convert">
         <div class="advert-form-block">
             <div class="advert-form-block-header">
                 <h2>{{advert.title}}</h2>
@@ -20,10 +21,9 @@
                         </a>
                     </div>
                     <div class="marker-end">
-                        <a href="#/adverts/markers/{{advert.marker.id}}/1"
-                           class="marker-link">
+                        <span class="marker-link">
                             {{advert.marker.name}}
-                        </a>
+                        </span>
                     </div>
                     <div class="tags-post">
                         Теги: <span ng-repeat="tag in advert.tags"><a href="#/adverts/tags/{{tag.id}}/1">#{{tag.name}}</a> </span>
@@ -84,5 +84,6 @@
                 </div>
             </div>
         </div>
+        <button class="convert-btn" ng-click="convert()">Конвертировать в PDF</button>
         </div>
     </div>

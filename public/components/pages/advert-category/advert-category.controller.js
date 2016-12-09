@@ -1,6 +1,6 @@
 'use strict';
 
-let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $routeParams, $window, aside) => {
+let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $routeParams, $window, aside, $route) => {
     $scope.currentPage = $routeParams.pageId;
     $scope.categoryId = $routeParams.categoryId;
     $scope.blockTitle = $cookies.get('category');
@@ -103,9 +103,9 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
 
     $scope.deleteAdvert = () => {
         advertCategory.deleteAdvert($scope.user, $scope.advertId).success((response) => {
-            $window.location.href = "#/adverts/categories/" + $scope.categoryId + "/" + $scope.currentPage;
+            $route.reload();
+            $scope.toggleModal();
         });
-        $scope.toggleModal();
     };
 
     $scope.searchAdvert = () => {
@@ -128,7 +128,8 @@ advertCategoryController.$inject = [
     'advertCategory',
     '$routeParams',
     '$window',
-    'aside'
+    'aside',
+    '$route'
 ];
 
 angular.module('app').controller('advertCategoryController', advertCategoryController);

@@ -49,6 +49,10 @@ let routesConfig = ($routeProvider) => {
             templateUrl: 'components/pages/advert-search/advert-search.html',
             controller: 'advertSearchController'
         })
+		.when('/admin/markers/:pageId', {
+			templateUrl: '',
+			controller: ''
+		})
 		.otherwise({
 			redirectTo: '/adverts/1'
 		});
