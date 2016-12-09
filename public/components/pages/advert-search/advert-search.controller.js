@@ -6,7 +6,7 @@ let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routePa
     $scope.blockTitle = "Категории";
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
-    if(!$scope.title){
+    if($scope.title == "undefined"){
         $scope.title = "";
     }
 

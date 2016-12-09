@@ -51,7 +51,7 @@ let advertAddController = ($scope, $cookies, auth, $window, advert, ui, aside) =
 
     $scope.getSubcategories = () => {
         advert.getSubcategories($scope.selected).success((response) => {
-            $scope.subcategories = response._embedded.subcategories;
+            $scope.popsubcategories = response._embedded.subcategories;
         })
         .error(() => {
             console.log("Error: can't get subcategories");

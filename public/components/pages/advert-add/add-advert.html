@@ -28,7 +28,7 @@
                         <label for="subcategory" class="label">Подкатегория: </label>
                         <select class="input" name="subcategory" id="subcategory"
                                 ng-model="formData.subcategory.id"
-                                ng-options="subcategory.id as subcategory.name for subcategory in subcategories"
+                                ng-options="subcategory.id as subcategory.name for subcategory in popsubcategories"
                                 required>
                             <option value=""></option>
                         </select>
