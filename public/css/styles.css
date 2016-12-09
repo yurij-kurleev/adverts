@@ -777,6 +777,17 @@ body{
     background-color: #6c2726;
 }
 
+#about-site{
+    font-size: 1.5rem;
+}
+
+.mail-link{
+    font-size: 1.4rem;
+    display: flex;
+    flex: 1 100%;
+    margin-bottom: 10px;
+}
+
 @media (max-width: 1200px) {
     body{
         font-size: 14px;

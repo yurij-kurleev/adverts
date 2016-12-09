@@ -68,12 +68,12 @@ let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routePa
 
     $scope.nextPage = () => {
         $scope.currentPage++;
-        $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+        $window.location.href = "#/adverts/search/" + $routeParams.title + "/" + $scope.currentPage;
     };
 
     $scope.prevPage = () => {
         $scope.currentPage--;
-        $window.location.href = "#/adverts/search/" + $scope.title + "/" + $scope.currentPage;
+        $window.location.href = "#/adverts/search/" + $routeParams.title + "/" + $scope.currentPage;
     };
 
     $scope.toggleModal = (advertId = null) => {

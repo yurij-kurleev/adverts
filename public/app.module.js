@@ -53,6 +53,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: '',
 			controller: ''
 		})
+		.when('/about', {
+			templateUrl: 'components/pages/about/about.html',
+			controller: 'aboutController'
+		})
 		.otherwise({
 			redirectTo: '/adverts/1'
 		});
