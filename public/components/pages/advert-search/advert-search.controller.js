@@ -6,6 +6,9 @@ let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routePa
     $scope.blockTitle = "Категории";
     $scope.user = $cookies.getObject('user');
     $scope.formData = {};
+    if(!$scope.title){
+        $scope.title = "";
+    }
 
     aside.getAdvertsByTitle($scope.currentPage, $scope.title).success((response) => {
         $scope.adverts = response._embedded.adverts;
