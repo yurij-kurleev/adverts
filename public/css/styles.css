@@ -739,16 +739,17 @@ body{
     top: 100px;
     left: 35%;
     color: #000;
-    width: 25%;
+    width: 15%;
     z-index: 101;
     justify-content: space-around;
     border-radius: 5px;
 }
 
 .modal-question{
-    margin: 4px 5%;
+    margin: 5% 4px;
     font-size: 1.2rem;
     text-align: center;
+    flex: 1 100%;
 }
 
 .submit, .reject{
@@ -844,7 +845,7 @@ body{
 
 .inline-admin-form{
     display: flex;
-    flex: 1 50%;
+    flex: 1 100%;
     align-items: center;
 }
 
@@ -896,6 +897,7 @@ body{
 
 .admin-table-row{
     display: flex;
+    flex-flow: row wrap;
     flex: 1 100%;
     border-bottom: 1px solid #eee;
     padding-left: 1%;
@@ -907,7 +909,7 @@ body{
 
 .admin-table-cell{
     display: flex;
-    flex: 1 100%;
+    flex: 1 25%;
     padding: 5px 0;
 }
 
@@ -939,6 +941,16 @@ body{
 
 .admin-edit-button:hover{
     background-color: #4c852c;
+}
+
+#admin-form-edit{
+    margin: 15px 30px;
+    border-top: 2px solid #8c8c8c;
+    padding: 7px;
+}
+
+#edit-input{
+    border: 1px solid #8c8c8c;
 }
 
 @media (max-width: 1200px) {

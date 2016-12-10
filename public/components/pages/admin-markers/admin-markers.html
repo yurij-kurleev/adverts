@@ -1,6 +1,8 @@
+<div ng-include="'components/partials/modal-delete.html'"></div>
 <div class="main-content-block container" id="admin-container">
     <div class="aside-block aside-admin" ng-include="'components/partials/side-menu-admin.html'"></div>
     <div class="items-block" id="admin-items-block">
+        <div ng-include="'/components/partials/error-block.html'"></div>
         <div class="admin-header">
             <form class="inline-admin-form" ng-submit="sendForm()" name="form">
                 <input type="text" class="input-admin-inline" id="marker" ng-model="formData.name"
@@ -19,16 +21,22 @@
                 <div class="admin-table-row" ng-repeat="marker in markers">
                     <div class="admin-table-cell">{{marker.id}}</div>
                     <div class="admin-table-cell">{{marker.name}}</div>
-                    <div class="admin-table-cell btn-cell">
+                    <div class="admin-table-cell btn-cell" ng-click="toggleModal(marker.id)">
                         <div class="admin-delete-button">
                             <img src="../../../img/cross.png" alt="crossIco">
                         </div>
                     </div>
-                    <div class="admin-table-cell btn-cell">
+                    <div class="admin-table-cell btn-cell" ng-click="toggleEdit(marker.id)">
                         <div class="admin-edit-button">
-                            <img src="../../../img/edit.png" alt="crossIco">
+                            <img src="../../../img/edit.png" alt="editIco">
                         </div>
                     </div>
+                    <form class="inline-admin-form" ng-submit="editAdvert()" name="form"
+                          id="admin-form-edit" ng-show="marker.show">
+                        <input type="text" class="input-admin-inline" id="edit-input"
+                               ng-model="formData.name" placeholder="Новая метка" required>
+                        <button class="plus-circle-btn" type="submit"> Ok </button>
+                    </form>
                 </div>
             </div>
         </div>

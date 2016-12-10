@@ -12,8 +12,30 @@ let adminMarkers = ($http) => {
         });
     };
 
+    let deleteMarker = (data, markerId) => {
+        return $http({
+            method: 'DELETE',
+            url: '/markers/' + markerId,
+            headers: {
+                'Authorization': 'Basic ' + data.login + ':' + data.password
+            }
+        });
+    };
+
+    let editMarker = (data, markerId) => {
+        return $http({
+            method: 'PUT',
+            url: '/markers/' + markerId,
+            headers: {
+                'Authorization': 'Basic ' + data.login + ':' + data.password
+            }
+        });
+    };
+
     return {
-        add
+        add,
+        deleteMarker,
+        editMarker
     };
 };
 
