@@ -59,7 +59,7 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
         })
         .error((response) => {
             if(response.status == 403) {
-                $scope.error = "Данная метка уже существует";
+                $scope.error = "Есть объявления с данным маркером";
                 ui.toggleError('error');
                 ui.scrollTo('error');
             }
@@ -68,8 +68,9 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
     };
 
     $scope.editMarker = () => {
-        adminMarkers.editMarker($scope.user, $scope.markerId, $scope.user).success((response) => {
+        adminMarkers.editMarker($scope.user, $scope.markerId, $scope.formData).success((response) => {
             $scope.markers.push({id: response.id, name: response.name, show: false});
+            $scope.formData = {};
             $scope.toggleModal();
         })
             .error((response) => {

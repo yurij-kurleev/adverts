@@ -22,7 +22,7 @@ let adminMarkers = ($http) => {
         });
     };
 
-    let editMarker = (user, data, markerId) => {
+    let editMarker = (user, markerId, data) => {
         return $http({
             method: 'PUT',
             url: '/markers/' + markerId,
