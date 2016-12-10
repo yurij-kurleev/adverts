@@ -78,7 +78,7 @@ let advertTagController = ($scope, $cookies, auth, ui, advertTag, $routeParams, 
         $scope.advertId = advertId;
     };
 
-    $scope.deleteAdvert = () => {
+    $scope.deleteItem = () => {
         advertTag.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $route.reload();
             $scope.toggleModal();

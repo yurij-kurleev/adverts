@@ -86,7 +86,7 @@ let homeController = ($scope, $cookies, auth, ui, home, $routeParams, $window, a
         $scope.advertId = advertId;
     };
 
-    $scope.deleteAdvert = () => {
+    $scope.deleteItem = () => {
         home.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $route.reload();
             $scope.toggleModal();

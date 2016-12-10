@@ -81,7 +81,7 @@ let advertSearchController = ($scope, $cookies, auth, ui, advertSearch, $routePa
         $scope.advertId = advertId;
     };
 
-    $scope.deleteAdvert = () => {
+    $scope.deleteItem = () => {
         advertSearch.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $route.reload();
             $scope.toggleModal();

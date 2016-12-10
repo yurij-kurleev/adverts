@@ -101,7 +101,7 @@ let advertCategoryController = ($scope, $cookies, auth, ui, advertCategory, $rou
         $scope.advertId = advertId;
     };
 
-    $scope.deleteAdvert = () => {
+    $scope.deleteItem = () => {
         advertCategory.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $route.reload();
             $scope.toggleModal();

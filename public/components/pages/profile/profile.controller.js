@@ -41,7 +41,7 @@ let profileController = ($scope, $cookies, auth, $window, profile, aside, ui, $r
         $scope.advertId = advertId;
     };
 
-    $scope.deleteAdvert = () => {
+    $scope.deleteItem = () => {
         profile.deleteAdvert($scope.user, $scope.advertId).success((response) => {
             $route.reload();
             $scope.toggleModal();

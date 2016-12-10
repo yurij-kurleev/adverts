@@ -46,7 +46,7 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
         $scope.markerId = markerId;
     };
 
-    $scope.deleteMarker = () => {
+    $scope.deleteItem = () => {
         adminMarkers.deleteMarker($scope.user, $scope.markerId).success((response) => {
             for(let i in $scope.markers){
                 if($scope.markers[i].id == $scope.markerId){
