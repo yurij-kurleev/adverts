@@ -19,10 +19,11 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
 
     $scope.sendForm = () => {
         adminMarkers.add($scope.formData, $scope.user).success((response) => {
-            $scope.markers.push({id: response.id, name: response.name});
+            $scope.markers.push({id: response.id, name: response.name, show: false});
+            $scope.formData = {};
         })
         .error((response) => {
-            if(response.status == 400){
+            if(response.status == 403){
                 $scope.error = "Данная метка уже существует";
                 ui.toggleError('error');
                 ui.scrollTo('error');
@@ -67,7 +68,7 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
     };
 
     $scope.editMarker = () => {
-        adminMarkers.editMarker($scope.user, $scope.markerId).success((response) => {
+        adminMarkers.editMarker($scope.user, $scope.markerId, $scope.user).success((response) => {
             $scope.markers.push({id: response.id, name: response.name, show: false});
             $scope.toggleModal();
         })

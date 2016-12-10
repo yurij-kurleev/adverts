@@ -18,7 +18,8 @@
                     <div class="admin-table-cell btn-cell"></div>
                     <div class="admin-table-cell btn-cell"></div>
                 </div>
-                <div class="admin-table-row" ng-repeat="marker in markers">
+                <div class="admin-table-row" ng-repeat="marker in markers track by $index"
+                     ng-show="marker">
                     <div class="admin-table-cell">{{marker.id}}</div>
                     <div class="admin-table-cell">{{marker.name}}</div>
                     <div class="admin-table-cell btn-cell" ng-click="toggleModal(marker.id)">

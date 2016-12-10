@@ -22,12 +22,13 @@ let adminMarkers = ($http) => {
         });
     };
 
-    let editMarker = (data, markerId) => {
+    let editMarker = (user, data, markerId) => {
         return $http({
             method: 'PUT',
             url: '/markers/' + markerId,
+            data: data,
             headers: {
-                'Authorization': 'Basic ' + data.login + ':' + data.password
+                'Authorization': 'Basic ' + user.login + ':' + user.password
             }
         });
     };
