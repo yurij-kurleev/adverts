@@ -46,10 +46,10 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
         $scope.markerId = markerId;
     };
 
-    $scope.deleteAdvert = () => {
+    $scope.deleteMarker = () => {
         adminMarkers.deleteMarker($scope.user, $scope.markerId).success((response) => {
             for(let i in $scope.markers){
-                if($scope.markers.id == $scope.markerId){
+                if($scope.markers[i].id == $scope.markerId){
                     delete $scope.markers[i];
                     break;
                 }
@@ -62,10 +62,11 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
                 ui.toggleError('error');
                 ui.scrollTo('error');
             }
+            $scope.toggleModal();
         });
     };
 
-    $scope.editAdvert = () => {
+    $scope.editMarker = () => {
         adminMarkers.editMarker($scope.user, $scope.markerId).success((response) => {
             $scope.markers.push({id: response.id, name: response.name, show: false});
             $scope.toggleModal();
@@ -76,6 +77,7 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
                     ui.toggleError('error');
                     ui.scrollTo('error');
                 }
+                $scope.toggleModal();
             });
     };
 };
