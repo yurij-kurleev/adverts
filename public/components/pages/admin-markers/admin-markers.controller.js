@@ -2,6 +2,7 @@
 
 let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $window) => {
     $scope.user = $cookies.getObject('user');
+    $scope.formData = {};
 
     if(!$scope.user || !$scope.user.admin){
         $window.location.href = '#/adverts/1';
@@ -69,9 +70,12 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
 
     $scope.editMarker = () => {
         adminMarkers.editMarker($scope.user, $scope.markerId, $scope.formData).success((response) => {
-            $scope.markers.push({id: response.id, name: response.name, show: false});
+            for(let i in $scope.markers){
+                if($scope.markers[i].id == $scope.markerId){
+                    $scope.markers[i] = {id: response.id, name: response.name, show: false};
+                }
+            }
             $scope.formData = {};
-            $scope.toggleModal();
         })
             .error((response) => {
                 if(response.status == 403) {
