@@ -1,0 +1,37 @@
+<div class="main-content-block container" id="admin-container">
+    <div class="aside-block aside-admin" ng-include="'components/partials/side-menu-admin.html'"></div>
+    <div class="items-block" id="admin-items-block">
+        <div class="admin-header">
+            <form class="inline-admin-form" ng-submit="sendForm()" name="form">
+                <input type="text" class="input-admin-inline" id="marker" ng-model="formData.name"
+                       placeholder="Новая метка" required>
+                <button class="plus-circle-btn" type="submit"> + </button>
+            </form>
+        </div>
+        <div class="admin-main-content">
+            <div class="admin-items-table">
+                <div class="admin-table-row header-row">
+                    <div class="admin-table-cell">ID</div>
+                    <div class="admin-table-cell">Name</div>
+                    <div class="admin-table-cell btn-cell"></div>
+                    <div class="admin-table-cell btn-cell"></div>
+                </div>
+                <div class="admin-table-row" ng-repeat="marker in markers">
+                    <div class="admin-table-cell">{{marker.id}}</div>
+                    <div class="admin-table-cell">{{marker.name}}</div>
+                    <div class="admin-table-cell btn-cell">
+                        <div class="admin-delete-button">
+                            <img src="../../../img/cross.png" alt="crossIco">
+                        </div>
+                    </div>
+                    <div class="admin-table-cell btn-cell">
+                        <div class="admin-edit-button">
+                            <img src="../../../img/edit.png" alt="crossIco">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer" ng-include="'components/partials/footer.html'"></div>

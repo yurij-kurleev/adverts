@@ -49,9 +49,9 @@ let routesConfig = ($routeProvider) => {
             templateUrl: 'components/pages/advert-search/advert-search.html',
             controller: 'advertSearchController'
         })
-		.when('/admin/markers/:pageId', {
-			templateUrl: '',
-			controller: ''
+		.when('/admin/markers', {
+			templateUrl: 'components/pages/admin-markers/admin-markers.html',
+			controller: 'adminMarkersController'
 		})
 		.when('/about', {
 			templateUrl: 'components/pages/about/about.html',

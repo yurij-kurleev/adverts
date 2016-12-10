@@ -1,0 +1,32 @@
+<aside class="aside-block" id="admin-aside">
+    <div class="menu-block">
+        <div class="menu">
+            <div class="menu-header">
+                Меню
+            </div>
+            <div class="menu-item">
+                <a href="#/home" class="menu-link">Главная страница</a>
+            </div>
+            <div class="menu-item">
+                <a href="#/about" class="menu-link">Информация о сайте</a>
+            </div>
+            <div class="menu-item" ng-show="user">
+                <a href="#/profile" class="menu-link">Личный кабинет</a>
+            </div>
+            <div class="menu-item" ng-show="user.admin">
+                <a href="#/admin/markers" class="menu-link">Управление</a>
+            </div>
+        </div>
+    </div>
+    <div class="menu-block">
+        <div class="menu">
+            <div class="menu-header">
+                Разделы
+            </div>
+            <div class="menu-item">
+                <a href="#/admin/markers" class="menu-link">Маркеры</a>
+            </div>
+        </div>
+    </div>
+    <div class="statistics-btn">Статистика</div>
+</aside>
