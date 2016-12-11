@@ -13,8 +13,7 @@
                     <div class="admin-table-cell">Name</div>
                     <div class="admin-table-cell">Mentioned</div>
                 </div>
-                <div class="admin-table-row" ng-repeat="tag in tags track by $index"
-                     ng-show="marker">
+                <div class="admin-table-row" ng-repeat="tag in tags track by $index">
                     <div class="admin-table-cell">{{tag.id}}</div>
                     <div class="admin-table-cell">{{tag.name}}</div>
                     <div class="admin-table-cell">{{tag.advertsAmount}}</div>
@@ -30,8 +29,8 @@
                     <div class="admin-table-cell">ID</div>
                     <div class="admin-table-cell">Name</div>
                 </div>
-                <div class="admin-table-row" ng-repeat="subcategory in subcategories track by $index"
-                     ng-show="marker">
+                <div class="admin-table-row"
+                     ng-repeat="subcategory in subcategories track by $index">
                     <div class="admin-table-cell">{{subcategory.id}}</div>
                     <div class="admin-table-cell">{{subcategory.name}}</div>
                 </div>

@@ -955,6 +955,7 @@ body{
 
 .admin-stats-link{
     text-decoration: none;
+    flex: 1 100%;
 }
 
 .main-statistics{
