@@ -53,6 +53,10 @@ let routesConfig = ($routeProvider) => {
 			templateUrl: 'components/pages/admin-markers/admin-markers.html',
 			controller: 'adminMarkersController'
 		})
+		.when('/admin/statistics', {
+			templateUrl: 'components/pages/admin-statistics/admin-statistics.html',
+			controller: 'adminStatisticsController'
+		})
 		.when('/about', {
 			templateUrl: 'components/pages/about/about.html',
 			controller: 'aboutController'

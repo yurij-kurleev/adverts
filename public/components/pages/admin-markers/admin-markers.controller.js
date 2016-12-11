@@ -83,7 +83,6 @@ let adminMarkersController = ($scope, $cookies, advert, adminMarkers, ui, $windo
                     ui.toggleError('error');
                     ui.scrollTo('error');
                 }
-                $scope.toggleModal();
             });
     };
 };
